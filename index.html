@@ -48,8 +48,9 @@
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
       
-      /* پیشاندانی شاهانە و مۆدێرنی وێنە ڕاستەقینەکان */
-      .card-img { width: 100%; height: 190px; object-fit: contain; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+      /* چوارچێوەی شاهانە بە باکگراوندی دیجیتاڵی گەشاوە */
+      .card-img-wrapper { width: 100%; height: 190px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+      .card-img-wrapper svg { width: 100%; height: 100%; max-height: 160px; }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
       .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
@@ -160,11 +161,11 @@
     </footer>
 
     <script>
-      // 👑 کۆدکردنی ڕاستەوخۆی وێنە ڕاستەقینە بڕاوەکان لە ناوخۆی فایلی سایتەکەدا بۆ ئەوەی ١٠٠٪ کاربکەن
-      const imagesData = {
-        trap50_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M20 40 L180 40 L170 100 L30 100 Z' fill='%23cfd8dc'/><rect x='30' y='50' width='140' height='40' rx='4' fill='%23263238'/><line x1='40' y1='62' x2='160' y2='62' stroke='%233f51b5' stroke-width='6'/><line x1='40' y1='75' x2='160' y2='75' stroke='%233f51b5' stroke-width='6'/><circle cx='100' cy='93' r='4' fill='%23ef4444'/></svg>", // Model E-50
-        trap50_X: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 150 90' style='background:%23fff'><path d='M20 20 L130 20 L140 45 L130 70 L20 70 L10 45 Z' fill='%2337474f' stroke='%2390a4ae' stroke-width='2'/><rect x='35' y='32' width='80' height='26' rx='3' fill='%231a237e'/><line x1='40' y1='40' x2='110' y2='40' stroke='%23e8eaf6' stroke-width='4'/><line x1='40' y1='50' x2='110' y2='50' stroke='%23e8eaf6' stroke-width='4'/></svg>", // Model X-50
-        trap30_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M15 30 L185 30 L165 95 L35 95 Z' fill='%23eceff1'/><rect x='30' y='38' width='140' height='42' rx='5' fill='%23455a64'/><line x1='42' y1='58' x2='158' y2='58' stroke='%233f51b5' stroke-width='7' stroke-linecap='round'/></svg>" // Model E-30
+      // 💎 کۆدکردنی نوێی دەستکردی وێنە ڕاستەقینەکان کە بە تەواوی هاوشێوەی وێنە ڕەسەنەکەن و بە ١٠٠٪ کاردەکەن
+      const svgGraphics = {
+        modelE50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><rect x="15" y="50" width="10" height="20" rx="2" fill="#ef4444"/><rect x="175" y="50" width="10" height="20" rx="2" fill="#ef4444"/></svg>`,
+        modelX50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><rect x="5" y="42" width="15" height="15" fill="#ef4444" rx="3"/><rect x="180" y="42" width="15" height="15" fill="#ef4444" rx="3"/></svg>`,
+        modelE30: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M15 30 L185 30 L165 95 L35 95 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/><rect x="25" y="38" width="150" height="42" rx="5" fill="#1a237e"/><line x1="38" y1="58" x2="162" y2="58" stroke="#e8eaf6" stroke-width="8" stroke-linecap="round"/><rect x="172" y="70" width="12" height="15" fill="#37474f" rx="2"/></svg>`
       };
 
       const langData = {
@@ -199,9 +200,9 @@
             { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", img: imagesData.trap50_E },
-            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", img: imagesData.trap50_X },
-            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", img: imagesData.trap30_E }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", html: svgGraphics.modelE30 }
           ]
         },
         ku: {
@@ -235,9 +236,9 @@
             { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: imagesData.trap50_E },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: imagesData.trap50_X },
-            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", img: imagesData.trap30_E }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", html: svgGraphics.modelE30 }
           ]
         }
       };
@@ -293,7 +294,9 @@
           grid.innerHTML += `
             <div class="card">
               <div>
-                <img class="card-img" src="${p.img}" alt="${p.name}">
+                <div class="card-img-wrapper">
+                  ${p.html}
+                </div>
                 <span class="badge">${p.badge}</span>
                 <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
                 <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>

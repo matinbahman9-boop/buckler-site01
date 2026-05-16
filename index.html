@@ -35,29 +35,46 @@
       .tab-btn { background: #1e293b; color: var(--text-sub); border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
       .tab-btn.active { background: var(--primary); color: white; }
       
-      .sim-box { background: #090d16; border: 2px dashed #4338ca; border-radius: 12px; padding: 30px; text-align: center; margin-top: 20px; position: relative; }
-      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(99, 102, 241, 0.05); pointer-events: none; opacity: 0; transition: 0.3s; border-radius: 12px; }
+      /* سیمولەیتەری نوێ بە ئەنیمەیشنی مێرووەکان */
+      .sim-box { background: #090d16; border: 2px dashed #4338ca; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 20px; position: relative; overflow: hidden; min-height: 250px; }
+      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(99, 102, 241, 0.05); pointer-events: none; opacity: 0; transition: 0.3s; border-radius: 12px; z-index: 1; }
       .sim-box.active .uv-glow { opacity: 1; background: rgba(99, 102, 241, 0.15); box-shadow: inset 0 0 50px rgba(99, 102, 241, 0.3); }
-      .sim-btn { background: #ef4444; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+      
+      /* گڵۆپی تیشکی ناو سیمولەیتەر */
+      .trap-light-bar { width: 80%; height: 14px; background: #222d42; margin: 15px auto; border-radius: 7px; transition: 0.4s; position: relative; z-index: 2; }
+      .sim-box.active .trap-light-bar { background: #818cf8; box-shadow: 0 0 20px #4f46e5, 0 0 40px #6366f1; }
+      
+      .sim-btn { background: #ef4444; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 15px; position: relative; z-index: 3; }
       .sim-btn.on { background: #22c55e; }
-      .spec-selector { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+      .spec-selector { display: flex; justify-content: center; gap: 10px; margin-top: 15px; position: relative; z-index: 3; }
       .spec-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 13px; }
       .spec-btn.active { border-color: var(--primary); background: #2e2a75; }
+
+      /* ئەنیمەیشنی مێرووەکان */
+      .bug { position: absolute; font-size: 22px; pointer-events: none; opacity: 0; z-index: 2; }
+      @keyframes flyToTrap {
+        0% { opacity: 1; left: var(--start-x); top: var(--start-y); transform: scale(1) rotate(0deg); }
+        90% { opacity: 0.9; transform: scale(0.7) rotate(180deg); }
+        100% { opacity: 0; left: 50%; top: 40px; transform: scale(0); }
+      }
 
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
       
-      /* چوارچێوەی شاهانە بە باکگراوندی دیجیتاڵی گەشاوە */
       .card-img-wrapper { width: 100%; height: 190px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
       .card-img-wrapper svg { width: 100%; height: 100%; max-height: 160px; }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
-      .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
+      .price-tag { background: #1e293b; border-radius: 6px; padding: 12px; margin-top: 10px; border-left: 4px solid var(--primary); display: flex; flex-direction: column; }
       body.rtl .price-tag { border-left: none; border-right: 4px solid var(--primary); }
       .price-main { font-weight: bold; color: #34d399; font-size: 19px; display: block; margin-bottom: 5px; }
-      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 10px; }
+      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-bottom: 10px; }
       
+      /* دوگمەی داواکردنی ڕاستەوخۆ بە واتسئاپ */
+      .wa-order-btn { background: #25d366; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px; text-decoration: none; text-align: center; display: block; transition: 0.3s; }
+      .wa-order-btn:hover { background: #128c7e; transform: scale(1.02); }
+
       .features-list { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid #1e293b; margin-top: 20px; }
       .features-list ul { list-style: none; }
       .features-list li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); }
@@ -71,10 +88,10 @@
       .calc-result { background: #161e31; padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px solid #ef4444; }
 
       .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-      .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
       body.rtl .whatsapp-float { right: auto; left: 20px; }
 
       footer { background: #070a13; text-align: center; padding: 40px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; font-size: 13px; margin-top: 40px; }
+      .credit-tag { display: block; margin-top: 10px; color: #6366f1; font-weight: bold; letter-spacing: 1px; font-size: 14px; }
     </style>
   </head>
   <body>
@@ -105,17 +122,19 @@
       </div>
     </section>
 
+    <!-- سیمولەیتەری مێرووەکان -->
     <section class="section">
       <h2 class="section-title" id="sim-title">Live UV Simulator</h2>
       <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;">Simulate attraction rates based on wavelength spectras.</p>
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
-        <div class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</div>
+        <div class="trap-light-bar"></div>
+        <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
         <div style="font-weight: bold; font-size: 18px;" id="sim-status">TRAP INACTIVE</div>
         <div class="spec-selector">
-          <div class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</div>
-          <div class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</div>
-          <div class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</div>
+          <button class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</button>
+          <button class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</button>
+          <button class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</button>
         </div>
       </div>
     </section>
@@ -158,10 +177,11 @@
 
     <footer>
       <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
+      <!-- ناوی فەرمی تۆ لە کۆتایی لاپەڕە -->
+      <span class="credit-tag">Developed by Matin Surchi</span>
     </footer>
 
     <script>
-      // 💎 کۆدکردنی نوێی دەستکردی وێنە ڕاستەقینەکان کە بە تەواوی هاوشێوەی وێنە ڕەسەنەکەن و بە ١٠٠٪ کاردەکەن
       const svgGraphics = {
         modelE50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><rect x="15" y="50" width="10" height="20" rx="2" fill="#ef4444"/><rect x="175" y="50" width="10" height="20" rx="2" fill="#ef4444"/></svg>`,
         modelX50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><rect x="5" y="42" width="15" height="15" fill="#ef4444" rx="3"/><rect x="180" y="42" width="15" height="15" fill="#ef4444" rx="3"/></svg>`,
@@ -187,14 +207,8 @@
           powerOff: "POWER OFF",
           lblSticker: "Sticker",
           lblLamp: "Lamp",
-          features: [
-            "European origin",
-            "Eco-friendly and does not adopt the electrocution system",
-            "Efficient lamp, designed to emit the blue spectrum of flying insects",
-            "Discrete design that hides captured insects",
-            "Device coverage is up to 100 m2",
-            "Lifetime efficiency: 2 years"
-          ],
+          orderTxt: "Order via WhatsApp 📥",
+          features: ["European origin", "Eco-friendly system", "Efficient 365nm lamp", "Discrete design", "Coverage up to 100 m²", "Lifetime efficiency: 2 years"],
           chapters: [
             { title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm. Buckler tubes hit this perfectly." },
             { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
@@ -223,14 +237,8 @@
           powerOff: "کوژاندنەوە",
           lblSticker: "فلای ستیكەر",
           lblLamp: "گڵۆپ",
-          features: [
-            "بەرهەمی بنەڕەتی ئەوروپییە",
-            "دۆستی ژینگەیە و سیستەمی کارەبا لێدان (تەقاندنەوە) بەکارناهێنێت",
-            "گڵۆپی کارامە، دیزاین کراوە بۆ دەرکردنی شەپۆلی شین بۆ ڕاکێشانی مێرووەکان",
-            "دیزاینێکی شاردراوە کە مێرووە گیراوەکان لە چاو دەشارێتەوە",
-            "ڕووبەری داپۆشینی ئامێرەکە تا ١٠٠ مەتر دووجایە",
-            "ماوەی کارامەیی تەمەنی: ٢ ساڵە"
-          ],
+          orderTxt: "داواکردن لە ڕێگەی واتسئاپ 📥",
+          features: ["بەرهەمی بنەڕەتی ئەوروپییە", "دۆستی ژینگەیە و سیستەمی کارەبا لێدان بەکارناهێنێت", "گڵۆپی کارامەی ٣٦٥ نانۆمەتر", "دیزاینێکی شاردراوە کە مێرووەکان دەشارێتەوە", "ڕووبەری داپۆشین تا ١٠٠ مەتر دووجایە", "ماوەی کارامەیی تەمەنی: ٢ ساڵە"],
           chapters: [
             { title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر. گڵۆپەکانی بەکڵەر ڕێک ئەمە دەپێکن." },
             { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
@@ -246,6 +254,7 @@
       let currentLang = 'en';
       let isSimOn = false;
       let activeChapter = 0;
+      let bugInterval = null;
 
       function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'ku' : 'en';
@@ -291,12 +300,14 @@
         const grid = document.getElementById('product-grid');
         grid.innerHTML = '';
         d.products.forEach(p => {
+          // دروستکردنی نامەی فەرمی کڕین بۆ چاتی واتسئاپ بۆ کڕیار
+          const waMsg = encodeURIComponent(`Hello Buckler Tech, I would like to order: ${p.name} (Price: ${p.price})`);
+          const waUrl = `https://wa.me?text=${waMsg}`;
+
           grid.innerHTML += `
             <div class="card">
               <div>
-                <div class="card-img-wrapper">
-                  ${p.html}
-                </div>
+                <div class="card-img-wrapper">${p.html}</div>
                 <span class="badge">${p.badge}</span>
                 <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
                 <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>
@@ -307,6 +318,7 @@
                   <span>${d.lblSticker}: ${p.sticker}</span>
                   <span>${d.lblLamp}: ${p.lamp}</span>
                 </div>
+                <a href="${waUrl}" class="wa-order-btn" target="_blank">${d.orderTxt}</a>
               </div>
             </div>
           `;
@@ -319,36 +331,31 @@
         isSimOn = !isSimOn;
         const box = document.getElementById('sim-box');
         const btn = document.getElementById('sim-toggle-btn');
-        if (isSimOn) { box.classList.add('active'); btn.classList.add('on'); } 
-        else { box.classList.remove('active'); btn.classList.remove('on'); }
+        if (isSimOn) {
+          box.classList.add('active');
+          btn.classList.add('on');
+          startBugs();
+        } else {
+          box.classList.remove('active');
+          btn.classList.remove('on');
+          stopBugs();
+        }
         updateUI();
       }
 
-      function setSpectrum(nm, btnId) {
-        document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(btnId).classList.add('active');
-        const status = document.getElementById('sim-status');
-        if (isSimOn) {
-          if (nm === 365) status.innerText = currentLang === 'en' ? "TRAP ACTIVE (99% ATTRACTION)" : "ئامێرەکە چالاکە (٩٩٪ ڕاکێشان)";
-          else if (nm === 450) status.innerText = currentLang === 'en' ? "WEAK SPECTRA (40% ATTRACTION)" : "شەپۆلی لاواز (٤٠٪ ڕاکێشان)";
-          else status.innerText = currentLang === 'en' ? "ZERO ATTRACTION (0%)" : "بێ کاریگەر (٠٪ ڕاکێشان)";
-        }
-      }
-
-      function calculateCoverage() {
-        const type = document.getElementById('env-type').value;
-        const area = parseFloat(document.getElementById('area-size').value) || 0;
-        let count = Math.ceil(area / 100);
-
-        const out = document.getElementById('calc-output');
-        if (currentLang === 'en') {
-          out.innerText = `For a ${area} sqm ${type} environment, we recommend installing at least ${count} Buckler device(s) for full 100m² coverage.`;
-        } else {
-          out.innerText = `بۆ ڕووبەری ${area} مەتر دووجا لە ژینگەی (${type === 'home' ? 'ناوچەی نیشتەجێبوون' : type === 'restaurant' ? 'چێشتخانە' : 'کارگە'}), پێشنیار دەکەین لانی کەم ${count} دانە ئامێری بەکڵەر دابنێیت بۆ داپۆشینی تەواوی ١٠٠ مەتر دووجاییەکە.`;
-        }
-      }
-
-      updateUI();
-    </script>
-  </body>
-</html>
+      function startBugs() {
+        if(bugInterval) clearInterval(bugInterval);
+        bugInterval = setInterval(() => {
+          if(!isSimOn) return;
+          const box = document.getElementById('sim-box');
+          const bug = document.createElement('div');
+          bug.className = 'bug';
+          
+          const bugTypes = ['🦟', '🪰', '🦋'];
+          bug.innerText = bugTypes[Math.floor(Math.random() * bugTypes.length)];
+          
+          const startX = Math.random() * 100;
+          const startY = Math.random() * 100 + 120;
+          
+          bug.style.setProperty('--start-x', startX + '%');
+          bug.style.setProperty

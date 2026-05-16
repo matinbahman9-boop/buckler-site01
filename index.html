@@ -18,7 +18,6 @@
       
       nav { background: #0f1424; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
       .logo { font-weight: bold; color: var(--primary); font-size: 20px; letter-spacing: 1px; }
-      .nav-links { display: flex; gap: 15px; align-items: center; }
       .lang-btn { background: #1e293b; color: white; border: 1px solid var(--primary); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 13px; }
       
       .hero { padding: 60px 20px; text-align: center; background: linear-gradient(180deg, #311010 0%, var(--bg-main) 100%); }
@@ -30,52 +29,45 @@
       
       .section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
       .section-title { color: var(--primary); margin-bottom: 20px; font-size: 24px; text-align: center; border-bottom: 2px solid #1e293b; padding-bottom: 10px; }
-      .pres-card { background: var(--bg-card); border-radius: 12px; padding: 25px; border: 1px solid #1e293b; margin-bottom: 15px; }
-      .pres-tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
-      .tab-btn { background: #1e293b; color: var(--text-sub); border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
-      .tab-btn.active { background: var(--primary); color: white; }
       
-      /* بەشی سیمولەیتەری پێشکەوتووی نوێ */
+      /* سیمولەیتەری زیرەک بە ئەنیمەیشنی مێرووەکان */
       .sim-box { background: #090d16; border: 2px dashed #4338ca; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 20px; position: relative; overflow: hidden; min-height: 250px; }
-      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: 0.5s; border-radius: 12px; z-index: 1; }
-      .sim-box.active .uv-glow { opacity: 1; background: rgba(99, 102, 241, 0.12); box-shadow: inset 0 0 60px rgba(99, 102, 241, 0.4); }
+      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(99, 102, 241, 0); pointer-events: none; transition: 0.5s; border-radius: 12px; z-index: 1; }
+      .sim-box.active .uv-glow { background: rgba(99, 102, 241, 0.15); box-shadow: inset 0 0 60px rgba(99, 102, 241, 0.4); }
       
-      /* گرافیکی ناو جیهازەکە لە کاتی پێکردن */
-      .trap-display { width: 160px; height: 90px; background: #232d42; border: 3px solid #455a64; border-radius: 8px; margin: 20px auto; position: relative; z-index: 2; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-      .sim-box.active .trap-display { border-color: #6366f1; box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); background: #111a2e; }
-      .trap-bulb { width: 80%; height: 10px; background: #555; border-radius: 5px; margin: 5px 0; transition: 0.3s; }
-      .sim-box.active .trap-bulb { background: #818cf8; box-shadow: 0 0 15px #6366f1, 0 0 25px #818cf8; }
+      /* گڵۆپی ناو ئامێرەکە */
+      .trap-light { width: 80%; height: 16px; background: #334155; margin: 20px auto; border-radius: 8px; transition: 0.4s; position: relative; z-index: 2; }
+      .sim-box.active .trap-light { background: #818cf8; box-shadow: 0 0 25px #4f46e5, 0 0 50px #6366f1; }
       
-      /* مێرووە جوڵاوەکان */
-      .bug { position: absolute; font-size: 20px; z-index: 3; pointer-events: none; opacity: 0; transition: transform 2s linear, opacity 0.5s; }
-      .sim-box.active .bug { opacity: 1; }
-
-      .sim-btn { background: #ef4444; color: white; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 15px; position: relative; z-index: 5; transition: 0.3s; }
+      .sim-btn { background: #ef4444; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-bottom: 15px; position: relative; z-index: 3; transition: 0.3s; }
       .sim-btn.on { background: #22c55e; }
-      .spec-selector { display: flex; justify-content: center; gap: 10px; margin-top: 15px; position: relative; z-index: 5; }
-      .spec-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 13px; }
-      .spec-btn.active { border-color: #ef4444; background: #2e2a75; }
+      
+      /* ئەنیمەیشنی مێشوولەکان */
+      .bug { position: absolute; font-size: 20px; pointer-events: none; opacity: 0; z-index: 2; transform: translate(-50%, -50%); }
+      @keyframes flyToTrap {
+        0% { opacity: 1; left: var(--start-x); top: var(--start-y); transform: scale(1) rotate(0deg); }
+        90% { opacity: 0.9; transform: scale(0.8) rotate(360deg); }
+        100% { opacity: 0; left: 50%; top: 50px; transform: scale(0); }
+      }
 
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
-      .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
-      .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-      
-      .card-img-wrapper { width: 100%; height: 190px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; display: flex; justify-content: center; align-items: center; }
-      .card-img-wrapper svg { width: 100%; height: 100%; max-height: 160px; }
+      .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; }
+      .card-img-wrapper { width: 100%; height: 160px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; padding: 10px; }
+      .card-img-wrapper svg { width: 100%; height: 100%; }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
-      .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
+      .price-tag { background: #1e293b; border-radius: 6px; padding: 15px; margin-top: 15px; border-left: 4px solid var(--primary); }
       body.rtl .price-tag { border-left: none; border-right: 4px solid var(--primary); }
-      .price-main { font-weight: bold; color: #34d399; font-size: 19px; display: block; margin-bottom: 5px; }
-      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 10px; }
+      .price-main { font-weight: bold; color: #34d399; font-size: 20px; display: block; margin-bottom: 5px; }
+      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-bottom: 12px; }
       
-      /* دوگمەی کڕینی ڕاستەوخۆ لە ڕێگەی واتسئاپ */
-      .buy-btn { display: block; text-align: center; background: #22c55e; color: white; text-decoration: none; padding: 10px; border-radius: 6px; margin-top: 15px; font-weight: bold; font-size: 15px; transition: 0.3s; }
-      .buy-btn:hover { background: #16a34a; }
+      /* دوگمەی داواکردن لە ڕێگەی واتسئاپ */
+      .order-btn { display: flex; align-items: center; justify-content: center; background-color: #25d366; color: white; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 14px; text-align: center; transition: 0.3s; margin-top: 5px; }
+      .order-btn:hover { background-color: #128c7e; }
 
       .features-list { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid #1e293b; margin-top: 20px; }
       .features-list ul { list-style: none; }
-      .features-list li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); }
+      .features-list li { margin-bottom: 12px; padding-left: 20px; position: relative; }
       .features-list li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: bold; }
       body.rtl .features-list li { padding-left: 0; padding-right: 20px; }
       body.rtl .features-list li::before { left: auto; right: 0; }
@@ -85,23 +77,18 @@
       input, select { width: 100%; padding: 10px; background: #1e293b; border: 1px solid #334155; color: white; border-radius: 6px; }
       .calc-result { background: #161e31; padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px solid #ef4444; }
 
-      .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-      .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
+      .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
       body.rtl .whatsapp-float { right: auto; left: 20px; }
 
-      /* ژێدەر و خاوەندارێتی مەتین سورچی */
       footer { background: #070a13; text-align: center; padding: 40px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; font-size: 13px; margin-top: 40px; }
-      .credits { font-weight: bold; color: #fff; margin-top: 10px; font-size: 14px; letter-spacing: 1px; }
-      .credits span { color: var(--primary); }
+      .dev-credit { display: block; margin-top: 10px; color: #6366f1; font-weight: bold; letter-spacing: 0.5px; }
     </style>
   </head>
   <body>
 
     <nav>
       <div class="logo">BUCKLER TECH</div>
-      <div class="nav-links">
-        <button class="lang-btn" onclick="toggleLanguage()">کوردی / EN</button>
-      </div>
+      <div><button class="lang-btn" onclick="toggleLanguage()">کوردی / EN</button></div>
     </nav>
 
     <section class="hero">
@@ -114,40 +101,15 @@
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title" id="pres-title">Interactive Presentation</h2>
-      <div class="pres-tabs" id="pres-tabs"></div>
-      <div class="pres-card">
-        <h3 id="chapter-title" style="color: #fff; margin-bottom: 10px;"></h3>
-        <p id="chapter-desc" style="color: var(--text-sub);"></p>
-      </div>
-    </section>
-
-    <!-- بەشی سیمولەیتەری ڕاستەقینەی مێرووەکان -->
+    <!-- سیمولەیتەری نوێ بە ئەنیمەیشنی مێشوولەکان -->
     <section class="section">
       <h2 class="section-title" id="sim-title">Live UV Simulator</h2>
       <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;">Simulate attraction rates based on wavelength spectras.</p>
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
-        
-        <!-- مێرووەکان لە ناو کایەکەدا دروست دەبن -->
-        <div class="bug" id="bug1" style="top: 10%; left: 5%;">🪰</div>
-        <div class="bug" id="bug2" style="top: 80%; left: 85%;">🦟</div>
-        <div class="bug" id="bug3" style="top: 20%; left: 75%;">🦋</div>
-        <div class="bug" id="bug4" style="top: 70%; left: 10%;">🪰</div>
-
-        <div class="trap-display">
-          <div class="trap-bulb"></div>
-          <div class="trap-bulb"></div>
-        </div>
-
+        <div class="trap-light"></div>
         <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
         <div style="font-weight: bold; font-size: 18px;" id="sim-status">TRAP INACTIVE</div>
-        <div class="spec-selector">
-          <button class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</button>
-          <button class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</button>
-          <button class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</button>
-        </div>
       </div>
     </section>
 
@@ -158,9 +120,7 @@
 
     <section class="section">
       <h2 class="section-title" id="feat-title">General Specifications</h2>
-      <div class="features-list">
-        <ul id="features-ul"></ul>
-      </div>
+      <div class="features-list"><ul id="features-ul"></ul></div>
     </section>
 
     <section class="section">
@@ -185,22 +145,19 @@
       </div>
     </section>
 
-    <!-- بەستەر بۆ ژمارەی مۆبایلی خۆت (دەتوانی بیگۆڕیت لە خوارەوە) -->
-    <a href="https://wa.me!" class="whatsapp-float" target="_blank">💬</a>
+    <a href="https://wa.me" class="whatsapp-float" target="_blank">💬</a>
 
     <footer>
       <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
-      <div class="credits">Developed by <span>Matin Surchii</span></div>
+      <!-- ناوی فەرمی خۆت بە شانازییەوە لێرەیە -->
+      <span class="dev-credit">Developed by Matin Surchi</span>
     </footer>
 
     <script>
-      // ⚠️ لێرە ژمارەی واتسئاپەکەت بنووسە بۆ ئەوەی ڕاستەوخۆ کڕیار نامەت بۆ بنێرێت
-      const myWhatsApp = "9647500000000"; 
-
       const svgGraphics = {
-        modelE50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/></svg>`,
-        modelX50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/></svg>`,
-        modelE30: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M15 30 L185 30 L165 95 L35 95 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/><rect x="25" y="38" width="150" height="42" rx="5" fill="#1a237e"/><line x1="38" y1="58" x2="162" y2="58" stroke="#e8eaf6" stroke-width="8" stroke-linecap="round"/></svg>`
+        modelE50: `<svg viewBox="0 0 200 120"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/></svg>`,
+        modelX50: `<svg viewBox="0 0 200 120"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/></svg>`,
+        modelE30: `<svg viewBox="0 0 200 120"><path d="M15 30 L185 30 L165 95 L35 95 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/><rect x="25" y="38" width="150" height="42" rx="5" fill="#1a237e"/><line x1="38" y1="58" x2="162" y2="58" stroke="#e8eaf6" stroke-width="8" stroke-linecap="round"/></svg>`
       };
 
       const langData = {
@@ -209,7 +166,7 @@
           heroDesc: "Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.",
           catTitle: "Product Catalog",
           simTitle: "Live UV Simulator",
-          simDesc: "Simulate attraction rates based on wavelength spectras.",
+          simDesc: "Turn on the trap to see the insect attraction effect.",
           calcTitle: "UV Coverage Calculator",
           featTitle: "General Specifications",
           lblType: "Environment Type",
@@ -222,13 +179,16 @@
           powerOff: "POWER OFF",
           lblSticker: "Sticker",
           lblLamp: "Lamp",
-          lblOrder: "Order via WhatsApp 💬",
-          features: ["European origin", "Eco-friendly design", "Efficient 365nm lamp", "Discrete capture hiding", "Coverage up to 100 m2", "Lifetime: 2 years"],
-          chapters: [{ title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm." }, { title: "Chapter 2: Chemical-Free", desc: "Zero poison, perfect safety for kitchens." }],
+          orderNow: "Order via WhatsApp 📥",
+          features: ["European origin", "Eco-friendly system", "Efficient 365nm lamp", "Discrete design", "Coverage up to 100 m²", "Lifetime efficiency: 2 years"],
+          chapters: [
+            { title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm. Buckler tubes hit this perfectly." },
+            { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
+          ],
           products: [
-            { name: "Model E Trap-50", desc: "INDUSTRIAL AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelE50 },
-            { name: "Model X Trap-50", desc: "RESTAURANTS & COMMERCIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelX50 },
-            { name: "Model E Trap-30", desc: "PRACTICAL COMPACT AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", html: svgGraphics.modelE30 }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", html: svgGraphics.modelE30 }
           ]
         },
         ku: {
@@ -236,7 +196,7 @@
           heroDesc: "بەکڵەر پێشکەوتووترین سیستەمی لەناوبردنی مێشوولە دابین دەکات بۆ چێشتخانە بازرگانییەکان، کارگەکان و ماڵە مۆدێرنەکان.",
           catTitle: "کەتەلۆگی بەرهەمەکان",
           simTitle: "سیمولەیتەری ڕاستەوخۆی UV",
-          simDesc: "ڕێژەی ڕاکێشانی مێش و مەگەز بەپێی درێژی شەپۆلی ڕووناکی تاقی بکەرەوە.",
+          simDesc: "ئامێرەکە دابگیرسێنە بۆ بینینی پرۆسەی ڕاکێشانی مێش و مەگەزەکان.",
           calcTitle: "حاسێبەی ڕووبەری داپۆشینی UV",
           featTitle: "تایبەتمەندییە گشتییەکان",
           lblType: "جۆری ژینگە",
@@ -249,13 +209,16 @@
           powerOff: "کوژاندنەوە",
           lblSticker: "فلای ستیكەر",
           lblLamp: "گڵۆپ",
-          lblOrder: "داواکردن لە ڕێگەی واتسئاپ 💬",
-          features: ["بەرهەمی بنەڕەتی ئەوروپییە", "دۆستی ژینگەیە و بێ تەقینەوەیە", "گڵۆپی کارامەی شەپۆلی شین", "دیزاینی شاردراوەی مێرووەکان", "داپۆشینی تا ١٠٠ مەتر دووجا", "تەمەنی کارامەیی: ٢ ساڵ"],
-          chapters: [{ title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر." }, { title: "بەشی ٢: دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، بۆ شوێنی خۆراک." }],
+          orderNow: "داواکردن لە ڕێگەی واتسئاپ 📥",
+          features: ["بەرهەمی بنەڕەتی ئەوروپییە", "دۆستی ژینگەیە و کارەبایی نییە", "گڵۆپی کارامەی ٣٦٥ نانۆمەتر", "دیزاینێکی شاردراوە و شیک", "ڕووبەری داپۆشین تا ١٠٠ م²", "ماوەی کارامەیی: ٢ ساڵ"],
+          chapters: [
+            { title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر. گڵۆپەکانی بەکڵەر ڕێک ئەمە دەپێکن." },
+            { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی خۆراک." }
+          ],
           products: [
-            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelE50 },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە بۆ چێشتخانەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelX50 },
-            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی بۆ شوێنە مامناوەندەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", html: svgGraphics.modelE30 }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠0 دینار", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", html: svgGraphics.modelE30 }
           ]
         }
       };
@@ -263,7 +226,7 @@
       let currentLang = 'en';
       let isSimOn = false;
       let activeChapter = 0;
-      let bugInterval;
+      let bugInterval = null;
 
       function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'ku' : 'en';
@@ -287,7 +250,7 @@
 
         const featUl = document.getElementById('features-ul');
         featUl.innerHTML = '';
-        d.features.forEach(f => { featUl.innerHTML += `<li>\${f}</li>`; });
+        d.features.forEach(f => { featUl.innerHTML += `<li>${f}</li>`; });
 
         const simBtn = document.getElementById('sim-toggle-btn');
         const simStatus = document.getElementById('sim-status');
@@ -298,8 +261,8 @@
         tabContainer.innerHTML = '';
         d.chapters.forEach((ch, idx) => {
           const btn = document.createElement('button');
-          btn.className = `tab-btn \${idx === activeChapter ? 'active' : ''}`;
-          btn.innerText = currentLang === 'en' ? `Chapter \${idx+1}` : `بەشی \${idx+1}`;
+          btn.className = `tab-btn ${idx === activeChapter ? 'active' : ''}`;
+          btn.innerText = currentLang === 'en' ? `Chapter ${idx+1}` : `بەشی ${idx+1}`;
           btn.onclick = () => { activeChapter = idx; updateUI(); };
           tabContainer.appendChild(btn);
         });
@@ -309,20 +272,91 @@
         const grid = document.getElementById('product-grid');
         grid.innerHTML = '';
         d.products.forEach(p => {
-          // دروستکردنی بەستەری ناوازەی نامەی واتسئاپ بۆ هەر بەرهەمێک بە جیا
-          const waMessage = encodeURIComponent(`Hello Matin Surchii, I would like to order: \({p.name} (\){p.price})`);
-          const waLink = `https://wa.me\({myWhatsApp}?text=\){waMessage}`;
+          // جێگیرکردنی نامەی تایبەت بۆ واتسئاپ بۆ هەر کاڵایەک
+          const waMessage = encodeURIComponent(`Hello Buckler Tech, I want to order: ${p.name} (Price: ${p.price})`);
+          const waLink = `https://wa.me?text=${waMessage}`;
 
           grid.innerHTML += `
             <div class="card">
               <div>
-                <div class="card-img-wrapper">\${p.html}</div>
-                <span class="badge">\${p.badge}</span>
-                <h3 style="color:#fff; margin-bottom:5px;">\${p.name}</h3>
-                <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">\${p.desc}</p>
+                <div class="card-img-wrapper">${p.html}</div>
+                <span class="badge">${p.badge}</span>
+                <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
+                <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>
               </div>
-              <div>
-                <div class="price-tag">
-                  <span class="price-main">\${p.price}</span>
-                  <div class="price-parts">
-                    
+              <div class="price-tag">
+                <span class="price-main">${p.price}</span>
+                <div class="price-parts">
+                  <span>${d.lblSticker}: ${p.sticker}</span>
+                  <span>${d.lblLamp}: ${p.lamp}</span>
+                </div>
+                <a href="${waLink}" class="order-btn" target="_blank">${d.orderNow}</a>
+              </div>
+            </div>
+          `;
+        });
+
+        calculateCoverage();
+      }
+
+      function toggleSim() {
+        isSimOn = !isSimOn;
+        const box = document.getElementById('sim-box');
+        const btn = document.getElementById('sim-toggle-btn');
+        if (isSimOn) {
+          box.classList.add('active');
+          btn.classList.add('on');
+          startSpawnBugs();
+        } else {
+          box.classList.remove('active');
+          btn.classList.remove('on');
+          stopSpawnBugs();
+        }
+        updateUI();
+      }
+
+      function startSpawnBugs() {
+        if(bugInterval) clearInterval(bugInterval);
+        bugInterval = setInterval(() => {
+          if(!isSimOn) return;
+          const box = document.getElementById('sim-box');
+          const bug = document.createElement('div');
+          bug.className = 'bug';
+          
+          const bugTypes = ['🦟', '🪰', '🦋'];
+          bug.innerText = bugTypes[Math.floor(Math.random() * bugTypes.length)];
+          
+          const startX = Math.random() * 100;
+          const startY = Math.random() * 100 + 100;
+          
+          bug.style.setProperty('--start-x', startX + '%');
+          bug.style.setProperty('--start-y', startY + 'px');
+          bug.style.animation = 'flyToTrap 2s forwards linear';
+          
+          box.appendChild(bug);
+          setTimeout(() => bug.remove(), 2000);
+        }, 300);
+      }
+
+      function stopSpawnBugs() {
+        clearInterval(bugInterval);
+        document.querySelectorAll('.bug').forEach(b => b.remove());
+      }
+
+      function calculateCoverage() {
+        const type = document.getElementById('env-type').value;
+        const area = parseFloat(document.getElementById('area-size').value) || 0;
+        let count = Math.ceil(area / 100);
+
+        const out = document.getElementById('calc-output');
+        if (currentLang === 'en') {
+          out.innerText = `For a ${area} sqm ${type} environment, we recommend installing at least ${count} Buckler device(s) for full 100m² coverage.`;
+        } else {
+          out.innerText = `بۆ ڕووبەری ${area} مەتر دووجا لە ژینگەی (${type === 'home' ? 'ناوچەی نیشتەجێبوون' : type === 'restaurant' ? 'چێشتخانە' : 'کارگە'}), پێشنیار دەکەین لانی کەم ${count} دانە ئامێری بەکڵەر دابنێیت بۆ داپۆشینی تەواوی ١٠٠ مەتر دووجاییەکە.`;
+        }
+      }
+
+      updateUI();
+    </script>
+  </body>
+</html>

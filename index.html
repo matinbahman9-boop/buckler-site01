@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BUCKLER Tech | Next-Gen UV Traps</title>
+    <title>BUCKLER Pest Control Tech | Next-Gen UV Traps</title>
     <style>
       :root {
         --bg-main: #070a13;
@@ -73,8 +73,7 @@
       .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
       body.rtl .whatsapp-float { right: auto; left: 20px; }
 
-      footer { background: #0b0f19; text-align: center; padding: 30px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; margin-top: 50px; }
-      .dev-credit { font-size: 14px; color: var(--primary); font-weight: bold; letter-spacing: 1.5px; margin-top: 5px; display: block; }
+      footer { background: #070a13; text-align: center; padding: 40px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; font-size: 13px; margin-top: 40px; }
     </style>
   </head>
   <body>
@@ -91,8 +90,8 @@
       <p id="hero-desc">Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.</p>
       <div class="stats">
         <div class="stat-item"><h3 id="stat-val1">99.8%</h3><p id="stat-lbl1">Catch Rate</p></div>
-        <div class="stats-item" style="background: var(--bg-card); padding: 15px 25px; border-radius: 8px; border: 1px solid #1e293b; min-width: 120px;"><h3 id="stat-val2">Up to 100m²</h3><p id="stat-lbl2">Coverage</p></div>
-        <div class="stat-item"><h3 id="stat-val3">2 Years</h3><p id="stat-lbl3">Efficiency</p></div>
+        <div class="stat-item"><h3 id="stat-val2">Up to 100m²</h3><p id="stat-lbl2">Coverage</p></div>
+        <div class="stat-item"><h3 id="stat-val3">2 Years</h3><p id="stat-lbl3">Warranty</p></div>
       </div>
     </section>
 
@@ -111,13 +110,158 @@
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
         <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
+        <p id="sim-status" style="font-weight: bold; margin-bottom: 10px; color: #ef4444;">Device Inactive</p>
+        <div class="spec-selector">
+          <button class="spec-btn active" onclick="setWavelength(365)">365nm (Optimal)</button>
+          <button class="spec-btn" onclick="setWavelength(400)">400nm (Low)</button>
+        </div>
       </div>
     </section>
 
+    <section class="section">
+      <h2 class="section-title" id="calc-title">Coverage Calculator</h2>
+      <div class="pres-card">
+        <div class="input-group">
+          <label id="calc-lbl" for="area-input">Enter Space Area (m²):</label>
+          <input type="number" id="area-input" value="50" oninput="calculateDevices()">
+        </div>
+        <div class="calc-result">
+          <p id="calc-res-text">Recommended Devices: 1 Unit of Buckler Pro</p>
+        </div>
+      </div>
+    </section>
+
+    <a href="https://wa.me" class="whatsapp-float" target="_blank">📳</a>
+
     <footer>
       <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
-      <span class="dev-credit">DEVELOP MATIN</span>
     </footer>
 
+    <script>
+      let currentLang = 'en';
+      let simActive = false;
+
+      const content = {
+        en: {
+          heroTitle: "Eliminate Pests with 365nm UV POWER",
+          heroDesc: "Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.",
+          statL1: "Catch Rate", statL2: "Coverage", statL3: "Warranty",
+          presTitle: "Interactive Presentation",
+          simTitle: "Live UV Simulator",
+          simDesc: "Simulate attraction rates based on wavelength spectras.",
+          calcTitle: "Coverage Calculator",
+          calcLbl: "Enter Space Area (m²):",
+          chapters: [
+            { title: "Why 365nm Wavelength?", desc: "Insects are naturally drawn to the 365nm UV spectrum. Buckler traps maximize attraction safely without chemicals." },
+            { title: "Eco-Friendly Protection", desc: "No odors, no toxic sprays, and zero pollution. Purely physical extraction designed for clean environments." }
+          ]
+        },
+        kr: {
+          heroTitle: "ناونیشانی تیشکی UV بۆ لەناوبردنی مێش و مەگەز",
+          heroDesc: "سیستەمی پێشکەوتووی باکلەر پاراستنێکی تەواو بۆ چێشتخانە و شوێنە گشتییەکان دابین دەکات بەبێ بەکارهێنانی ماددەی کیمیایی.",
+          statL1: "ڕێژەی گرتن", statL2: "ڕووبەری داپۆشین", statL3: "کاتی گەرەنتی",
+          presTitle: "پێشکەشکردنی کارلێکەر",
+          simTitle: "سیمیولەیتەری تیشکی UV",
+          simDesc: "تاقیکردنەوەی ڕێژەی ڕاکێشانی مێش بەپێی درێژی شەپۆلی تیشکەکە.",
+          calcTitle: "حاسیبەی ڕووبەر",
+          calcLbl: "ڕووبەری شوێنەکەت بنووسە (مەتر دووجا):",
+          chapters: [
+            { title: "بۆچی شەپۆلی 365nm؟", desc: "مێش و مەگەز بە شێوازێکی سروشتی ڕادەکێشرێن بەرەو تیشکی 365nm. ئامێرەکانی باکلەر زۆرترین کارایی دابین دەکەن." },
+            { title: "پاراستنی دۆستی ژینگە", desc: "بێ بۆن، بێ ماددەی ژەهراوی و بەبێ هیچ پیسبوونێک. سیستەمێکی فیزیایی پاک بۆ پاراستنی تەندروستی." }
+          ]
+        }
+      };
+
+      function updateUI() {
+        const data = content[currentLang];
+        document.getElementById('hero-title').innerText = data.heroTitle;
+        document.getElementById('hero-desc').innerText = data.heroDesc;
+        document.getElementById('stat-lbl1').innerText = data.statL1;
+        document.getElementById('stat-lbl2').innerText = data.statL2;
+        document.getElementById('stat-lbl3').innerText = data.statL3;
+        document.getElementById('pres-title').innerText = data.presTitle;
+        document.getElementById('sim-title').innerText = data.simTitle;
+        document.getElementById('sim-desc').innerText = data.simDesc;
+        document.getElementById('calc-title').innerText = data.calcTitle;
+        document.getElementById('calc-lbl').innerText = data.calcLbl;
+        
+        // ڕێندەرکردنی تابەکان
+        const tabsContainer = document.getElementById('pres-tabs');
+        tabsContainer.innerHTML = '';
+        data.chapters.forEach((ch, idx) => {
+          const btn = document.createElement('button');
+          btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
+          btn.innerText = currentLang === 'en' ? `Topic ${idx+1}` : `بابەتی ${idx+1}`;
+          btn.onclick = () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('chapter-title').innerText = ch.title;
+            document.getElementById('chapter-desc').innerText = ch.desc;
+          };
+          tabsContainer.appendChild(btn);
+        });
+        
+        // نیشاندانی تابی یەکەم بە فۆڵت
+        document.getElementById('chapter-title').innerText = data.chapters[0].title;
+        document.getElementById('chapter-desc').innerText = data.chapters[0].desc;
+        calculateDevices();
+      }
+
+      function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'kr' : 'en';
+        document.body.classList.toggle('rtl', currentLang === 'kr');
+        updateUI();
+      }
+
+      function toggleSim() {
+        simActive = !simActive;
+        const box = document.getElementById('sim-box');
+        const btn = document.getElementById('sim-toggle-btn');
+        const status = document.getElementById('sim-status');
+        
+        if(simActive) {
+          box.classList.add('active');
+          btn.classList.add('on');
+          btn.innerText = "POWER ON";
+          status.innerText = currentLang === 'en' ? "Attraction Rate: 99.8% (Maximum)" : "ڕێژەی ڕاکێشان: ٩٩.٨٪ (زۆرترین)";
+          status.style.color = "#22c55e";
+        } else {
+          box.classList.remove('active');
+          btn.classList.remove('on');
+          btn.innerText = "POWER OFF";
+          status.innerText = currentLang === 'en' ? "Device Inactive" : "ئامێرەکە کوژاوەتەوە";
+          status.style.color = "#ef4444";
+        }
+      }
+
+      function setWavelength(wl) {
+        document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        const status = document.getElementById('sim-status');
+        if(!simActive) return;
+        
+        if(wl === 365) {
+          status.innerText = currentLang === 'en' ? "Attraction Rate: 99.8% (Maximum)" : "ڕێژەی ڕاکێشان: ٩٩.٨٪ (زۆرترین)";
+          status.style.color = "#22c55e";
+        } else {
+          status.innerText = currentLang === 'en' ? "Attraction Rate: 35% (Inefficient)" : "ڕێژەی ڕاکێشان: ٣٥٪ (بێ سوود)";
+          status.style.color = "#eab308";
+        }
+      }
+
+      function calculateDevices() {
+        const area = document.getElementById('area-input').value;
+        const resText = document.getElementById('calc-res-text');
+        const devices = Math.ceil(area / 50);
+        if(currentLang === 'en') {
+          resText.innerText = `Recommended Devices: ${devices} Unit(s) of Buckler System`;
+        } else {
+          resText.innerText = `ئامێری پێویست: ${devices} دانە لە سیستەمی باکلەر`;
+        }
+      }
+
+      // دەستپێکردنی یەکەمجار
+      updateUI();
+    </script>
   </body>
 </html>

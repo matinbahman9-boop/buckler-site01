@@ -3,10 +3,171 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BUCKLER Pest Control Tech | Next-Gen Commercial & Residential UV Traps</title>
+    <title>BUCKLER Pest Control Tech | Next-Gen UV Traps</title>
+    <style>
+      /* ڕێکخستنی گشتی */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+      }
+      /* بەشی سەرەکی (Header) */
+      header {
+        background-color: #1e293b;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid #3b82f6;
+      }
+      header h1 {
+        color: #3b82f6;
+        font-size: 28px;
+        letter-spacing: 2px;
+      }
+      header p {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+      /* بەشی ناساندن (Hero Section) */
+      .hero {
+        padding: 60px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+      }
+      .hero h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+      .hero p {
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+        color: #cbd5e1;
+      }
+      .cta-btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+      }
+      .cta-btn:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+      }
+      /* بەشی بەرهەمەکان (Products) */
+      .products-container {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 24px;
+        color: #3b82f6;
+        position: relative;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+      .card {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        border: 1px solid #334155;
+        transition: 0.3s;
+      }
+      .card:hover {
+        border-color: #3b82f6;
+        transform: translateY(-5px);
+      }
+      .card-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
+      .card h3 {
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+      .card p {
+        font-size: 14px;
+        color: #94a3b8;
+      }
+      /* بەشی خوارەوە (Footer) */
+      footer {
+        background-color: #0f172a;
+        text-align: center;
+        padding: 30px 20px;
+        font-size: 13px;
+        color: #64748b;
+        border-top: 1px solid #1e293b;
+        margin-top: 60px;
+      }
+    </style>
   </head>
-  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; background-color: #0f172a; color: #ffffff; margin: 0;">
-    <h1>پڕۆژەکەت بە سەرکەوتوویی کار دەکات! 🚀</h1>
-    <p>ئێستا دەتوانیت کۆدی HTML و CSS ی خۆت لێرە دابنێیت.</p>
+  <body>
+
+    <!-- سەرپەڕی ماڵپەڕ -->
+    <header>
+      <h1>BUCKLER PEST CONTROL</h1>
+      <p>Next-Gen Commercial & Residential UV Traps</p>
+    </header>
+
+    <!-- بەشی Hero -->
+    <section class="hero">
+      <h2>Advanced Fly Control Technology</h2>
+      <p>High-efficiency, stylish, and eco-friendly ultraviolet light traps designed to keep your indoor spaces completely pest-free.</p>
+      <a href="#products" class="cta-btn">Explore Products</a>
+    </section>
+
+    <!-- بەشی بەرهەمەکان -->
+    <section class="products-container" id="products">
+      <h2 class="section-title">Our UV Trap Solutions</h2>
+      
+      <div class="grid">
+        <!-- بەرهەمی یەکەم -->
+        <div class="card">
+          <div class="card-icon">🏠</div>
+          <h3>Residential Ultra</h3>
+          <p>Sleek and completely silent UV trap perfectly tailored for modern kitchens, living rooms, and private homes.</p>
+        </div>
+
+        <!-- بەرهەمی دووەم -->
+        <div class="card">
+          <div class="card-icon">🏢</div>
+          <h3>Commercial Pro</h3>
+          <p>Heavy-duty, wide-coverage suction and glue-board UV device built for restaurants, warehouses, and offices.</p>
+        </div>
+
+        <!-- بەرهەمی سێیەم -->
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Eco Zap Eco</h3>
+          <p>Energy-saving professional light trap using new low-wattage LED UV technology for 24/7 continuous protection.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- پێپەڕی ماڵپەڕ -->
+    <footer>
+      <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
+    </footer>
+
   </body>
 </html>

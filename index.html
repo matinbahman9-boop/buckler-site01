@@ -1,386 +1,205 @@
-export type Language = 'en' | 'ku';
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BUCKLER Pest Control Tech | Next-Gen UV Traps</title>
+    <style>
+      /* ڕێکخستنی گشتی بە ڕەنگی UV */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        background-color: #0b0f19;
+        color: #f1f5f9;
+        line-height: 1.6;
+      }
+      header {
+        background-color: #111827;
+        padding: 30px 20px;
+        text-align: center;
+        border-bottom: 3px solid #6366f1;
+      }
+      header h1 {
+        color: #6366f1;
+        font-size: 26px;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+      header p {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+      .hero {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(180deg, #1e1b4b 0%, #0b0f19 100%);
+      }
+      .hero h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+      .hero p {
+        font-size: 15px;
+        max-width: 650px;
+        margin: 0 auto 25px auto;
+        color: #cbd5e1;
+      }
+      .stats-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+      .stat-card {
+        background: #1e1b4b;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid #4338ca;
+        min-width: 100px;
+      }
+      .stat-card h4 {
+        color: #818cf8;
+        font-size: 20px;
+      }
+      .stat-card p {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+      .container {
+        padding: 30px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-title {
+        color: #6366f1;
+        margin-bottom: 25px;
+        font-size: 22px;
+        border-left: 4px solid #6366f1;
+        padding-left: 10px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .card {
+        background-color: #111827;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid #1f2937;
+      }
+      .card h3 {
+        color: #ffffff;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      .card p {
+        font-size: 14px;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      .badge {
+        background-color: #312e81;
+        color: #a5b4fc;
+        padding: 3px 8px;
+        font-size: 11px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      .price {
+        font-weight: bold;
+        color: #34d399;
+        font-size: 16px;
+      }
+      .info-list {
+        list-style: none;
+      }
+      .info-list li {
+        padding: 10px;
+        background: #111827;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .info-list strong {
+        color: #818cf8;
+      }
+      footer {
+        background-color: #0b0f19;
+        text-align: center;
+        padding: 30px 20px;
+        font-size: 12px;
+        color: #4b5563;
+        border-top: 1px solid #1f2937;
+      }
+    </style>
+  </head>
+  <body>
 
-export const translations = {
-  en: {
-    nav: {
-      presentation: "Interactive Presentation",
-      simulator: "Live UV Simulator",
-      catalog: "Product Catalog",
-      calculator: "Coverage Calculator",
-      guide: "Pest Guide",
-      consultation: "Request Consultation",
-      langSwitch: "کوردی / KU",
-      getQuote: "Get a Quote"
-    },
-    hero: {
-      tagline: "Next-Gen Commercial & Residential UV Insect Traps - 100% Shatterproof Chemical Free",
-      titleHeader: "Smart UV Spectrum Wavelength Tech",
-      titleMain: "Eliminate Pests with 365nm UV POWER",
-      description: "Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes. Witness our tech in the interactive presentation player.",
-      stats: [
-        { value: "99.8%", label: "Catch Rate" },
-        { value: "365nm", label: "Max Attraction" },
-        { value: "0%", label: "Chemicals" }
-      ],
-      badges: ["ISO 9001 Certified", "HACCP Compliant"],
-      ctaPlay: "Play Interactive Story",
-      ctaSim: "Try UV Simulator"
-    },
-    presentation: {
-      header: "🪰 Bugs bothering you?",
-      title: "CHOOSE THE RIGHT UV MACHINE! ⚡",
-      sub: "TO EFFECTIVELY ELIMINATE INSECTS!",
-      brand: "BUCKLER Pest Control Services",
-      chapters: [
-        { id: 1, title: "1. Problem", desc: "Flying insects contaminate sensitive food prep areas, bother restaurant guests, and spread dangerous airborne pathogens in commercial environments." },
-        { id: 2, title: "2. Solution", desc: "Buckler traps utilize Philips shatterproof UV-A tubes emitting exactly 365nm light—the precise wavelength flying insects are naturally wired to seek." },
-        { id: 3, title: "3. Power", desc: "Equipped with 4000V non-clogging electric grids or food-safe pheromone glue boards that instantly capture 99.8% of approaching insects." },
-        { id: 4, title: "4. Buckler", desc: "Engineered for absolute HACCP compliance, IP65 washdown resistance for factories, and whisper-quiet operation for elegant home living." }
-      ]
-    },
-    simulator: {
-      title: "Interactive Sandbox Demo",
-      subtitle: "Test the Buckler UV Trap Live",
-      desc: "Adjust the light spectrum wavelength and observe how different insect species respond to UV attraction versus standard room lighting. Click bugs to zap them instantly!",
-      powerLabel: "UV Machine Power",
-      powerOn: "POWER ON",
-      powerOff: "POWER OFF",
-      spectrumLabel: "Light Spectrum (Nanometers)",
-      spec365: "365nm (UV-A High)",
-      spec450: "450nm (Blue Light)",
-      spec580: "580nm (Warm Light)",
-      densityLabel: "Insect Population Density",
-      autoZap: "Auto Grid Zap Mode",
-      efficiency: "Real-time Efficiency",
-      attractionRate: "Attraction",
-      totalZapped: "Total Zapped",
-      activeStatus: "TRAP ACTIVE",
-      inactiveStatus: "TRAP INACTIVE",
-      clickPrompt: "Click anywhere to spawn bugs",
-      bugs: ["House Fly", "Mosquito", "Moth"]
-    },
-    catalog: {
-      super: "Engineered for Perfection",
-      title: "Commercial & Residential Equipment",
-      desc: "Explore our certified UV insect elimination traps. Equipped with Philips UV-A shatterproof tubes, hygienic glue boards, or high-voltage electric grids.",
-      msrp: "MSRP",
-      requestQuote: "Request Quote",
-      bestSeller: "Best Seller",
-      products: [
-        {
-          id: "PROMAX-360",
-          name: "Buckler ProMax 360",
-          tag: "Industrial / Warehouse IP65 Rated",
-          desc: "Heavy-duty commercial UV-A zapper designed for large food manufacturing plants, packaging areas, and distribution warehouses.",
-          coverage: "250 m² (2,700 sq ft)",
-          uvOutput: "2x 40W (365nm)",
-          method: "4000V Auto Grid",
-          price: "$349",
-          image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          id: "KITCHEN-SHIELD",
-          name: "Buckler KitchenShield",
-          tag: "Restaurant / Kitchen HACCP Approved",
-          desc: "Discreet glue-board fly trap tailored for food preparation spaces. Traps insects silently without electric zapping or airborne contamination.",
-          coverage: "120 m² (1,300 sq ft)",
-          uvOutput: "2x 20W (365nm)",
-          method: "Pheromone Glue Board",
-          price: "$219",
-          image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          id: "ECOHOME-MINI",
-          name: "Buckler EcoHome Mini",
-          tag: "Residential / Office Ultra Quiet",
-          desc: "Sleek, aesthetically pleasing UV trap designed for living rooms, patios, and modern offices. Protects family spaces safely.",
-          coverage: "50 m² (540 sq ft)",
-          uvOutput: "1x 18W (365nm)",
-          method: "Whisper Suction Fan",
-          price: "$129",
-          image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800"
-        }
-      ]
-    },
-    calculator: {
-      super: "Facility Sizing Tool",
-      title: "UV Coverage Calculator",
-      desc: "Enter your room or facility dimensions to instantly calculate the recommended UV wattage and ideal machine quantity.",
-      typeLabel: "Environment Type",
-      types: [
-        { id: "kitchen", name: "Commercial Kitchen / Restaurant", multiplier: 1.2 },
-        { id: "warehouse", name: "Industrial / Warehouse", multiplier: 1.5 },
-        { id: "residential", name: "Residential / Office", multiplier: 1.0 },
-        { id: "retail", name: "Supermarket / Retail Food", multiplier: 1.3 }
-      ],
-      lengthLabel: "Length (Meters)",
-      widthLabel: "Width (Meters)",
-      disclaimer: "Calculations based on international pest management lighting standards.",
-      overview: "Recommendation Overview",
-      totalArea: "Total Area",
-      minWattage: "Min. UV Wattage",
-      tubesLabel: "365nm UV-A Tubes",
-      recSetup: "Recommended Hardware Setup",
-      placementTip: "Mount 2-2.5 meters above floor level, positioned away from direct sunlight.",
-      lockConfig: "Lock In This Configuration"
-    },
-    pestGuide: {
-      super: "Pest Intelligence",
-      title: "Phototaxis Spectrum Attraction",
-      desc: "Understanding how flying insects perceive light is key to total elimination. Discover why Buckler's 365nm peak output outperforms standard commercial lighting.",
-      items: [
-        {
-          name: "House & Fruit Flies",
-          desc: "Highly sensitive to UV-A wavelengths. They associate UV light with open navigation space and safety.",
-          peak: "350 - 370 nm"
-        },
-        {
-          name: "Mosquitoes",
-          desc: "Attracted to UV light combined with CO2 or heat. Our specialized residential models utilize dual attraction.",
-          peak: "365 nm + Warmth"
-        },
-        {
-          name: "Moths & Beetles",
-          desc: "Nocturnal insects rely on celestial ultraviolet light for orientation, trapping them instantly in Buckler grids.",
-          peak: "360 - 380 nm"
-        },
-        {
-          name: "Wasps & Gnats",
-          desc: "Attracted to high-intensity UV output. Ideal for food preparation facilities needing zero tolerance.",
-          peak: "365 nm"
-        }
-      ]
-    },
-    consultation: {
-      super: "Direct Expert Access",
-      title: "Request Quote & Audit",
-      desc: "Ready to implement professional UV pest control? Fill out the form below for a custom layout plan and quote.",
-      name: "Full Name",
-      company: "Company / Business Name",
-      phone: "Phone Number",
-      model: "Selected Model / Package",
-      details: "Facility Details & Special Requirements",
-      submit: "Submit Consultation Request",
-      successTitle: "Request Received!",
-      successText: "Thank you for choosing Buckler Pest Control Services. Our UV technical specialist will review your parameters and contact you within 24 hours.",
-      done: "Done"
-    },
-    footer: {
-      tagline: "Next-generation ultraviolet insect elimination solutions for commercial, industrial, and residential applications.",
-      catTitle: "Product Categories",
-      cats: [
-        "Buckler ProMax 360",
-        "Buckler KitchenShield",
-        "Buckler EcoHome Mini",
-        "Glue Board Refills",
-        "UV-A Philips Bulbs"
-      ],
-      resTitle: "Knowledge Resources",
-      res: [
-        "Coverage Sizing Tool",
-        "Phototaxis Guide",
-        "Presentation Player",
-        "HACCP Compliance"
-      ],
-      contactTitle: "Contact Details",
-      contacts: [
-        "+964 7504183334",
-        "info@bucklerpest.com",
-        "Erbil, Kurdistan Region"
-      ],
-      copy: "©2026 BUCKLER Pest Control Services. All rights reserved. Matin",
-      links: ["Privacy Policy", "Terms of Service", "Sitemap"]
-    }
-  },
-  ku: {
-    nav: {
-      presentation: "پێشکەشکردنی کارلێککار",
-      simulator: "هاوشێوەکاری تیشکی سەروو وەنەوشەیی",
-      catalog: "کەتەلۆگی بەرهەمەکان",
-      calculator: "پێوانەی ڕووبەر",
-      guide: "ڕێبەری مێرووەکان",
-      consultation: "داواکردنی ڕاوێژکاری",
-      langSwitch: "English / EN",
-      getQuote: "وەرگرتنی نرخ"
-    },
-    hero: {
-      tagline: "نەوەی نوێی ئامێرەکانی ڕاوکردنی مێروو - ١٠٠٪ دژە شکان و بێ ماددەی کیمیایی",
-      titleHeader: "تەکنەلۆژیای زیرەکی تیشکی سەروو وەنەوشەیی",
-      titleMain: "لەناوبردنی مێروو بە هێزی تیشکی 365nm",
-      description: "بەکله‌ر سیستەمی پێشکەوتووی تیشکی سەروو وەنەوشەیی دابین دەکات بۆ چێشتخانە بازرگانییەکان، کارگەکان و ماڵە مۆدێرنەکان.",
-      stats: [
-        { value: "99.8%", label: "ڕێژەی گرتن" },
-        { value: "365nm", label: "بەهێزترین ڕاکێشان" },
-        { value: "0%", label: "ماددەی کیمیایی" }
-      ],
-      badges: ["بڕوانامەی ISO 9001", "گونجاو لەگەڵ HACCP"],
-      ctaPlay: "بینینی پێشکەشکردن",
-      ctaSim: "تاقیکردنەوەی هاوشێوەکار"
-    },
-    presentation: {
-      header: "🪰 مێرووەکان بێزارت دەکەن؟",
-      title: "باشترین ئامێری UV هەڵبژێرە! ⚡",
-      sub: "بۆ لەناوبردنی مێرووەکان بە شێوەیەکی کاریگەر!",
-      brand: "خزمەتگوزارییەکانی قڕکردنی مێرووی بەکلەر",
-      chapters: [
-        { id: 1, title: "١. کێشەکە", desc: "مێرووە فڕیوەکان شوێنی ئامادەکردنی خۆراک پیس دەکەن و دەبنە هۆی بڵاوبوونەوەی نەخۆشی." },
-        { id: 2, title: "٢. چارەسەر", desc: "ئامێرەکانی بەکلەر گڵۆپی فلیپسی دژە شکان بەکاردەهێنن بە درێژی شەپۆلی 365nm کە سەرنجی مێرووەکان ڕادەکێشێت." },
-        { id: 3, title: "٣. هێز", desc: "تۆڕی کارەبایی 4000V یان تەختەی چەسپی تەندروست کە دەستبەجێ ٩٩.٨٪ی مێرووەکان دەگرێت." },
-        { id: 4, title: "٤. بەکلەر", desc: "دروستکراوە بۆ گونجان لەگەڵ ستانداردەکانی HACCP و بەرگری IP65 بۆ کارگەکان." }
-      ]
-    },
-    simulator: {
-      title: "نموونەی تاقیکاری کارلێککار",
-      subtitle: "تاقیکردنەوەی ئامێری بەکلەر ڕاستەوخۆ",
-      desc: "درێژی شەپۆلی تیشکەکە بگۆڕە و کاردانەوەی جۆرە جیاوازەکانی مێروو ببینە. کرتە لە مێرووەکان بکە بۆ لەناوبردنیان!",
-      powerLabel: "هێزی ئامێر",
-      powerOn: "هەڵکراوە",
-      powerOff: "کوژراوەتەوە",
-      spectrumLabel: "شەپۆلی تیشک (نانۆمەتر)",
-      spec365: "365nm (سەروو وەنەوشەیی بەهێز)",
-      spec450: "450nm (تیشکی شین)",
-      spec580: "580nm (تیشکی گەرم)",
-      densityLabel: "چڕی مێرووەکان",
-      autoZap: "دۆخی کارەبایی ئۆتۆماتیکی",
-      efficiency: "کاریگەری ڕاستەوخۆ",
-      attractionRate: "ڕێژەی ڕاکێشان",
-      totalZapped: "کۆی گشتی لەناوبراو",
-      activeStatus: "ئامێر چالاکە",
-      inactiveStatus: "ئامێر ناچالاکە",
-      clickPrompt: "کرتە لە هەر شوێنێک بکە بۆ دروستکردنی مێروو",
-      bugs: ["مێشی ماڵ", "مێشوولە", "پەپوولە پاییزە"]
-    },
-    catalog: {
-      super: "ئەندازیاری بێوێنە",
-      title: "ئامێرەکانی بازرگانی و ماڵەوە",
-      desc: "ئامێرە باوەڕپێکراوەکانی تیشکی سەروو وەنەوشەیی ئێمە بپشکنە کە بە گڵۆپی فلیپس و تۆڕی کارەبایی بەهێز تەیارکراون.",
-      msrp: "نرخی فەرمی",
-      requestQuote: "داواکردنی نرخ",
-      bestSeller: "پڕفرۆشترین",
-      products: [
-        {
-          id: "PROMAX-360",
-          name: "بەکلەر پرۆماکس ٣٦٠",
-          tag: "پیشەسازی / کۆگا IP65",
-          desc: "ئامێرێکی بەهێزی بازرگانییە بۆ کارگەی گەورەی خۆراک و کۆگاکانی دابەشکردن.",
-          coverage: "٢٥٠ مەتر دووجا",
-          uvOutput: "٢ گڵۆپی 40W (365nm)",
-          method: "تۆڕی کارەبایی 4000V",
-          price: "$349",
-          image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          id: "KITCHEN-SHIELD",
-          name: "بەکلەر کچن شیڵد",
-          tag: "چێشتخانە / باوەڕپێکراوی HACCP",
-          desc: "تەڵەیەکی بێدەنگی چەسپە بۆ شوێنەکانی ئامادەکردنی خۆراک. بێ هیچ دەنگ و پیسبوونێک مێروو دەگرێت.",
-          coverage: "١٢٠ مەتر دووجا",
-          uvOutput: "٢ گڵۆپی 20W (365nm)",
-          method: "تەختەی چەسپی فێرۆمۆن",
-          price: "$219",
-          image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800"
-        },
-        {
-          id: "ECOHOME-MINI",
-          name: "بەکلەر ئیکۆهۆم مینی",
-          tag: "ماڵەوە / ئۆفیس زۆر بێدەنگ",
-          desc: "ئامێرێکی قەشەنگە بۆ ژووری دانیشتن و ئۆفیسی مۆدێرن. بە سەلامەتی خێزانەکەت دەپارێزێت.",
-          coverage: "٥٠ مەتر دووجا",
-          uvOutput: "١ گڵۆپی 18W (365nm)",
-          method: "پانكەی هەڵمژینی بێدەنگ",
-          price: "$129",
-          image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800"
-        }
-      ]
-    },
-    calculator: {
-      super: "ئامرازی پێوانەکردن",
-      title: "پێوانەی ڕووبەری پێویست",
-      desc: "پێوانەی ژوورەکەت بنووسە بۆ زانینی هێزی پێویست و ژمارەی ئامێرەکان.",
-      typeLabel: "جۆری ژینگە",
-      types: [
-        { id: "kitchen", name: "چێشتخانەی بازرگانی / ڕێستورانت", multiplier: 1.2 },
-        { id: "warehouse", name: "پیشەسازی / کۆگا", multiplier: 1.5 },
-        { id: "residential", name: "ماڵەوە / ئۆفیس", multiplier: 1.0 },
-        { id: "retail", name: "سوپەرمارکێت / فرۆشگای خۆراک", multiplier: 1.3 }
-      ],
-      lengthLabel: "درێژی (مەتر)",
-      widthLabel: "پانی (مەتر)",
-      disclaimer: "ژمێرکارییەکان لەسەر بنەمای ستانداردە نێودەوڵەتییەکانی ڕووناکی بۆ کۆنترۆڵی مێروو کراون.",
-      overview: "پوختەی پێشنیارکراو",
-      totalArea: "کۆی ڕووبەر",
-      minWattage: "کەمترین هێزی گڵۆپ",
-      tubesLabel: "گڵۆپی 365nm UV-A",
-      recSetup: "ئامێری پێشنیارکراو",
-      placementTip: "بە بەرزی ٢ بۆ ٢.٥ مەتر لە زەوییەوە جێگیر بکرێت و دوور بێت لە تیشکی خۆر.",
-      lockConfig: "ئەم هەڵبژاردنە جێگیر بکە"
-    },
-    pestGuide: {
-      super: "زانیاری مێرووەکان",
-      title: "ڕاکێشانی شەپۆلی تیشک",
-      desc: "تێگەیشتن لە چۆنیەتی بینینی مێرووەکان کلیلی سەرەکییە بۆ لەناوبردنیان. بزانە بۆچی تیشکی 365nm ی بەکلەر باشترینە.",
-      items: [
-        {
-          name: "مێشی ماڵ و میوە",
-          desc: "زۆر هەستیارن بۆ تیشکی UV-A. ڕووناکی بە ئازادی و سەلامەتی دەزانن.",
-          peak: "350 - 370 nm"
-        },
-        {
-          name: "مێشوولە",
-          desc: "ڕادەکێشرێن بۆ تیشکی UV بە تێکەڵ لەگەڵ گەرمی. مۆدێلەکانی ماڵەوەمان دوو سیستەمی ڕاکێشان بەکاردەهێنن.",
-          peak: "365 nm + گەرمی"
-        },
-        {
-          name: "پەپوولە و قۆنگرە",
-          desc: "مێرووی شەوانەن و پشت بە تیشکی سەروو وەنەوشەیی دەبەستن، ئەمەش وا دەکات خێرا تەڵە بکرێن.",
-          peak: "360 - 380 nm"
-        },
-        {
-          name: "زەردەواڵە و مێشوولەی بچووک",
-          desc: "ڕادەکێشرێن بۆ تیشکی چڕی بەرز. زۆر گونجاوە بۆ کارگەی خۆراک.",
-          peak: "365 nm"
-        }
-      ]
-    },
-    consultation: {
-      super: "پەیوەندی بە پسپۆڕان",
-      title: "داواکردنی نرخ و پشکنین",
-      desc: "ئامادەی بۆ دانانی سیستەمی پێشکەوتووی بەکلەر؟ فۆڕمەکە پڕبکەرەوە بۆ وەرگرتنی پلانی تایبەت.",
-      name: "ناوی تەواو",
-      company: "ناوی کۆمپانیا / کار",
-      phone: "ژمارەی تەلەفۆن",
-      model: "مۆدێلی هەڵبژێردراو",
-      details: "زانیاری شوێن و داواکاری تایبەت",
-      submit: "ناردنی داواکاری",
-      successTitle: "داواکارییەکەت گەیشت!",
-      successText: "سوپاس بۆ هەڵبژاردنی خزمەتگوزارییەکانی قڕکردنی مێرووی بەکلەر. پسپۆڕی تەکنیکی ئێمە لە ماوەی ٢٤ کاتژمێردا پەیوەندیت پێوە دەکات.",
-      done: "تەواو"
-    },
-    footer: {
-      tagline: "چارەسەرەکانی نەوەی نوێی لەناوبردنی مێروو بۆ شوێنی بازرگانی، پیشەسازی و نیشتەجێبوون.",
-      catTitle: "پۆلەکانی بەرهەم",
-      cats: [
-        "بەکلەر پرۆماکس ٣٦٠",
-        "بەکلەر کچن شیڵد",
-        "بەکلەر ئیکۆهۆم مینی",
-        "تەختەی چەسپی یەدەگ",
-        "گڵۆپەکانی فلیپس UV-A"
-      ],
-      resTitle: "سەرچاوەی زانیاری",
-      res: [
-        "پێوانەی ڕووبەر",
-        "ڕێبەری مێرووەکان",
-        "پێشکەشکردنی ڤیدیۆیی",
-        "گونجان لەگەڵ HACCP"
-      ],
-      contactTitle: "زانیاری پەیوەندی",
-      contacts: [
-        "+964 7504183334",
-        "info@bucklerpest.com",
-        "هەولێر، هەرێمی کوردستان"
-      ],
-      copy: "©2026 BUCKLER Pest Control Services. گشت مافەکان پارێزراوە. Matin",
-      links: ["سیاسەتی تایبەتێتی", "مەرجەکانی بەکارهێنان", "نەخشەی ماڵپەڕ"]
-    }
-  }
-};
+    <header>
+      <h1>BUCKLER Pest Control Services</h1>
+      <p>Smart UV Spectrum Wavelength Tech</p>
+    </header>
+
+    <section class="hero">
+      <h2>Eliminate Pests with 365nm UV POWER</h2>
+      <p>Next-Gen Commercial & Residential UV Insect Traps - 100% Shatterproof Chemical Free. Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.</p>
+      
+      <div class="stats-container">
+        <div class="stat-card"><h4>99.8%</h4><p>Catch Rate</p></div>
+        <div class="stat-card"><h4>365nm</h4><p>Max Attraction</p></div>
+        <div class="stat-card"><h4>0%</h4><p>Chemicals</p></div>
+      </div>
+    </section>
+
+    <div class="container">
+      
+      <h2 class="section-title">Product Catalog</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="badge">Industrial / Warehouse IP65 Rated</span>
+          <h3>Buckler ProMax 360</h3>
+          <p>Heavy-duty commercial UV-A zapper designed for large food manufacturing plants, packaging areas, and distribution warehouses.</p>
+          <p><strong>Coverage:</strong> 250 m² | <strong>Method:</strong> 4000V Auto Grid</p>
+          <span class="price">$349</span>
+        </div>
+        <div class="card">
+          <span class="badge">Restaurant / Kitchen HACCP Approved</span>
+          <h3>Buckler KitchenShield</h3>
+          <p>Discreet glue-board fly trap tailored for food preparation spaces. Traps insects silently without electric zapping.</p>
+          <p><strong>Coverage:</strong> 120 m² | <strong>Method:</strong> Pheromone Glue Board</p>
+          <span class="price">$219</span>
+        </div>
+        <div class="card">
+          <span class="badge">Residential / Office Ultra Quiet</span>
+          <h3>Buckler EcoHome Mini</h3>
+          <p>Sleek, aesthetically pleasing UV trap designed for living rooms, patios, and modern offices. Protects family spaces safely.</p>
+          <p><strong>Coverage:</strong> 50 m² | <strong>Method:</strong> Whisper Suction Fan</p>
+          <span class="price">$129</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">Phototaxis Spectrum Attraction (Pest Guide)</h2>
+      <ul class="info-list">
+        <li><strong>House & Fruit Flies:</strong> Highly sensitive to UV-A wavelengths. Peak: 350 - 370 nm</li>
+        <li><strong>Mosquitoes:</strong> Attracted to UV light combined with CO2 or heat. Peak: 365 nm + Warmth</li>
+        <li><strong>Moths & Beetles:</strong> Nocturnal insects rely on celestial ultraviolet light. Peak: 360 - 380 nm</li>
+        <li><strong>Wasps & Gnats:</strong> Attracted to high-intensity UV output. Peak: 365 nm</li>
+      </ul>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2026 BUCKLER Pest Control Services. Next-generation ultraviolet insect elimination solutions.</p>
+    </footer>
+
+  </body>
+</html>

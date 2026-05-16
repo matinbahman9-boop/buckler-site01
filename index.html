@@ -8,7 +8,7 @@
       :root {
         --bg-main: #070a13;
         --bg-card: #111625;
-        --primary: #6366f1;
+        --primary: #ef4444;
         --text-main: #f1f5f9;
         --text-sub: #94a3b8;
       }
@@ -18,12 +18,12 @@
       
       /* Navigation */
       nav { background: #0f1424; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
-      .logo { font-weight: bold; color: var(--primary); font-size: 20px; }
+      .logo { font-weight: bold; color: var(--primary); font-size: 20px; letter-spacing: 1px; }
       .nav-links { display: flex; gap: 15px; align-items: center; }
       .lang-btn { background: #1e293b; color: white; border: 1px solid var(--primary); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 13px; }
       
       /* Hero */
-      .hero { padding: 60px 20px; text-align: center; background: linear-gradient(180deg, #1e1b4b 0%, var(--bg-main) 100%); }
+      .hero { padding: 60px 20px; text-align: center; background: linear-gradient(180deg, #311010 0%, var(--bg-main) 100%); }
       .hero h1 { font-size: 2.2rem; color: #fff; margin-bottom: 15px; }
       .hero p { color: var(--text-sub); max-width: 700px; margin: 0 auto 25px auto; font-size: 1rem; }
       .stats { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
@@ -32,7 +32,7 @@
       
       /* Interactive Presentation */
       .section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
-      .section-title { color: var(--primary); margin-bottom: 20px; font-size: 24px; text-align: center; }
+      .section-title { color: var(--primary); margin-bottom: 20px; font-size: 24px; text-align: center; border-bottom: 2px solid #1e293b; padding-bottom: 10px; }
       .pres-card { background: var(--bg-card); border-radius: 12px; padding: 25px; border: 1px solid #1e293b; margin-bottom: 15px; }
       .pres-tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
       .tab-btn { background: #1e293b; color: var(--text-sub); border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
@@ -49,24 +49,35 @@
       .spec-btn.active { border-color: var(--primary); background: #2e2a75; }
 
       /* Catalog Grid & Images */
-      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-      .card { background: var(--bg-card); border-radius: 10px; padding: 20px; border: 1px solid #1e293b; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
-      .card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #1e293b; }
-      .badge { background: #312e81; color: #a5b4fc; padding: 3px 8px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; }
-      .price { font-weight: bold; color: #34d399; font-size: 18px; display: block; margin-top: 10px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
+      .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
+      .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+      .card-img { width: 100%; height: 180px; object-fit: contain; background: #1a2035; border-radius: 8px; margin-bottom: 15px; padding: 10px; }
+      .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
+      .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
+      body.rtl .price-tag { border-left: none; border-right: 4px solid var(--primary); }
+      .price-main { font-weight: bold; color: #34d399; font-size: 19px; display: block; margin-bottom: 5px; }
+      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 20px; }
       
-      /* Calculator & Guide */
+      /* Features List */
+      .features-list { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid #1e293b; margin-top: 20px; }
+      .features-list ul { list-style: none; }
+      .features-list li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); }
+      .features-list li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: bold; }
+      body.rtl .features-list li { padding-left: 0; padding-right: 20px; }
+      body.rtl .features-list li::before { left: auto; right: 0; }
+
+      /* Calculator */
       .input-group { margin-bottom: 15px; }
       .input-group label { display: block; margin-bottom: 5px; font-size: 14px; }
       input, select { width: 100%; padding: 10px; background: #1e293b; border: 1px solid #334155; color: white; border-radius: 6px; }
-      .calc-result { background: #161e31; padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px solid #2563eb; }
+      .calc-result { background: #161e31; padding: 20px; border-radius: 8px; margin-top: 15px; border: 1px solid #ef4444; }
 
       /* Floating WhatsApp Button */
       .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 100; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
       .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
       body.rtl .whatsapp-float { right: auto; left: 20px; }
 
-      /* Footer */
       footer { background: #070a13; text-align: center; padding: 40px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; font-size: 13px; margin-top: 40px; }
     </style>
   </head>
@@ -84,8 +95,8 @@
       <p id="hero-desc">Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.</p>
       <div class="stats">
         <div class="stat-item"><h3 id="stat-val1">99.8%</h3><p id="stat-lbl1">Catch Rate</p></div>
-        <div class="stat-item"><h3 id="stat-val2">365nm</h3><p id="stat-lbl2">Max Attraction</p></div>
-        <div class="stat-item"><h3 id="stat-val3">0%</h3><p id="stat-lbl3">Chemicals</p></div>
+        <div class="stat-item"><h3 id="stat-val2">Up to 100m²</h3><p id="stat-lbl2">Coverage</p></div>
+        <div class="stat-item"><h3 id="stat-val3">2 Years</h3><p id="stat-lbl3">Efficiency</p></div>
       </div>
     </section>
 
@@ -102,7 +113,7 @@
     <!-- Live UV Simulator -->
     <section class="section">
       <h2 class="section-title" id="sim-title">Live UV Simulator</h2>
-      <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;"></p>
+      <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;">Simulate attraction rates based on wavelength spectras.</p>
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
         <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
@@ -121,6 +132,14 @@
       <div class="grid" id="product-grid"></div>
     </section>
 
+    <!-- General Features -->
+    <section class="section">
+      <h2 class="section-title" id="feat-title">General Specifications</h2>
+      <div class="features-list">
+        <ul id="features-ul"></ul>
+      </div>
+    </section>
+
     <!-- Coverage Calculator -->
     <section class="section">
       <h2 class="section-title" id="calc-title">UV Coverage Calculator</h2>
@@ -128,215 +147,216 @@
         <div class="input-group">
           <label id="lbl-type">Environment Type</label>
           <select id="env-type" onchange="calculateCoverage()">
-            <option value="1.2">Commercial Kitchen / Restaurant</option>
-            <option value="1.5">Industrial / Warehouse</option>
-            <option value="1.0">Residential / Office</option>
+            <option value="home">Residential / Home Kitchen</option>
+            <option value="restaurant">Commercial Restaurant / Café</option>
+            <option value="factory">Industrial Warehouse / Factory</option>
           </select>
         </div>
-        <div class="grid" style="margin-top: 0; margin-bottom: 15px;">
-          <div class="input-group">
-            <label id="lbl-width">Width (Meters)</label>
-            <input type="number" id="room-width" value="10" oninput="calculateCoverage()">
-          </div>
-          <div class="input-group">
-            <label id="lbl-length">Length (Meters)</label>
-            <input type="number" id="room-length" value="12" oninput="calculateCoverage()">
-          </div>
+        <div class="input-group">
+          <label id="lbl-area">Area Size (Sqm)</label>
+          <input type="number" id="area-size" value="50" oninput="calculateCoverage()" min="1" />
         </div>
         <div class="calc-result">
-          <h3 id="calc-res-title" style="margin-bottom: 10px;">Recommendation Overview</h3>
-          <p><span id="res-area">Total Area</span>: <strong id="out-area">120</strong> m²</p>
-          <p><span id="res-watt">Min. UV Wattage</span>: <strong id="out-watt">144</strong>W</p>
+          <h3 id="calc-res-title" style="margin-bottom: 10px;">Recommended Setup:</h3>
+          <p id="calc-output">Loading analysis...</p>
         </div>
       </div>
     </section>
 
-    <!-- WhatsApp Native App Protocol Link (Forcing Mobile Launch) -->
-    <a href="whatsapp://send?phone=9647504183334" class="whatsapp-float">
-      <svg width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.564 7.93-7.934A7.83 7.83 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-3.146c-.202-.101-1.202-.594-1.392-.662-.189-.068-.327-.101-.465.101-.138.202-.533.661-.652.793-.12.133-.239.144-.44.041-.201-.101-.848-.313-1.616-.997-.597-.533-.999-1.192-1.116-1.392-.118-.2-.012-.307.088-.407.091-.09.202-.234.302-.351.1-.117.133-.198.2-.33.065-.133.032-.25-.016-.35-.049-.1-.465-1.122-.638-1.54-.168-.406-.333-.351-.465-.351-.12 0-.258-.005-.396-.005-.138 0-.363.052-.554.26-.191.208-.73.713-.73 1.74 0 1.026.75 2.018.854 2.162.104.143 1.477 2.254 3.578 3.161.5.215.89.343 1.196.44.502.159.96.137 1.322.083.405-.06 1.202-.491 1.371-.963.169-.472.169-.877.118-.963-.05-.085-.19-.133-.392-.234z"/>
-      </svg>
-    </a>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me" class="whatsapp-float" target="_blank">💬</a>
 
     <footer>
-      <p id="footer-text">&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
+      <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
     </footer>
 
     <script>
-      const translations = {
+      const langData = {
         en: {
           heroTitle: "Eliminate Pests with 365nm UV POWER",
           heroDesc: "Buckler delivers professional-grade UV insect elimination systems tailored for commercial kitchens, industrial facilities, and modern homes.",
-          statL1: "Catch Rate", statL2: "Max Attraction", statL3: "Chemicals",
-          presTitle: "Interactive Presentation",
+          catTitle: "Product Catalog",
           simTitle: "Live UV Simulator",
-          simDesc: "Adjust the light spectrum wavelength and observe how different insect species respond to UV attraction.",
-          powerOn: "POWER ON", powerOff: "POWER OFF",
-          statActive: "TRAP ACTIVE", statInactive: "TRAP INACTIVE",
-          catTitle: "Commercial & Residential Equipment",
+          simDesc: "Simulate attraction rates based on wavelength spectras.",
           calcTitle: "UV Coverage Calculator",
-          lblType: "Environment Type", lblWidth: "Width (Meters)", lblLength: "Length (Meters)",
-          resTitle: "Recommendation Overview", resArea: "Total Area", resWatt: "Min. UV Wattage",
-          footer: "© 2026 BUCKLER Pest Control Services. Next-generation ultraviolet insect elimination solutions.",
+          featTitle: "General Specifications",
+          lblType: "Environment Type",
+          lblArea: "Area Size (Sqm)",
+          calcResTitle: "Recommended Setup:",
+          presTitle: "Interactive Presentation",
+          trapActive: "TRAP ACTIVE (MAX ATTRACTION)",
+          trapInactive: "TRAP INACTIVE",
+          powerOn: "POWER ON",
+          powerOff: "POWER OFF",
+          features: [
+            "European origin",
+            "Eco-friendly and does not adopt the electrocution system",
+            "Efficient lamp, designed to emit the blue spectrum of flying insects",
+            "Discrete design that hides captured insects",
+            "Device coverage is up to 100 m2",
+            "Lifetime efficiency: 2 years"
+          ],
           chapters: [
-            { id: 1, title: "1. Problem", desc: "Flying insects contaminate sensitive food prep areas and spread pathogenes." },
-            { id: 2, title: "2. Solution", desc: "Buckler traps utilize Philips shatterproof UV-A tubes emitting exactly 365nm light." },
-            { id: 3, title: "3. Power", desc: "Equipped with 4000V non-clogging electric grids or food-safe pheromone glue boards." },
-            { id: 4, title: "4. Buckler", desc: "Engineered for absolute HACCP compliance and whisper-quiet operation." }
+            { title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm. Buckler tubes hit this perfectly." },
+            { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
           ],
           products: [
-            { name: "Buckler ProMax 360", tag: "Industrial / Warehouse", desc: "Heavy-duty commercial UV-A zapper designed for large factories.", price: "$349", img: "https://unsplash.com" },
-            { name: "Buckler KitchenShield", tag: "Restaurant / Kitchen", desc: "Discreet glue-board fly trap tailored for food preparation spaces.", price: "$219", img: "https://unsplash.com" },
-            { name: "Buckler EcoHome Mini", tag: "Residential / Office", desc: "Sleek, aesthetically pleasing UV trap designed for living rooms.", price: "$129", img: "https://unsplash.com" }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", img: "https://unsplash.com", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500" },
+            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", img: "https://unsplash.com", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500" },
+            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", img: "https://unsplash.com", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000" }
           ]
         },
         ku: {
-          heroTitle: "لەناوبردنی مێرووەکان بە هێزی تیشکی 365nm UV",
-          heroDesc: "بەکڵەر سیستەمی پێشکەوتووی تیشکی UV پێشکەش دەکات کە تایبەت دروستکراوە بۆ چێشتخانە بازرگانییەکان، شوێنە پیشەسازییەکان و ماڵە مۆدێرنەکان.",
-          statL1: "ڕێژەی گرتن", statL2: "بەرزترین ڕادەی ڕاکێشان", statL3: "ماددەی کیمیایی",
-          presTitle: "پێشکەشکردنی کارلێکەر (Presentation)",
+          heroTitle: "ناوبردنی مێرووەکان بە هێزی تیشکی 365nm UV",
+          heroDesc: "بەکڵەر پێشکەوتووترین سیستەمی لەناوبردنی مێشوولە دابین دەکات بۆ چێشتخانە بازرگانییەکان، کارگەکان و ماڵە مۆدێرنەکان.",
+          catTitle: "کەتەلۆگی بەرهەمەکان",
           simTitle: "سیمولەیتەری ڕاستەوخۆی UV",
-          simDesc: "شەپۆلی تیشکەکە بگۆڕە بۆ بینینی چۆنیەتی کاردانەوەی مێرووەکان بۆ ڕاکێشانی تیشکی یوڤی.",
-          powerOn: "کار دەکات", powerOff: "کوژاوەتەوە",
-          statActive: "ئامێرەکە چالاکە", statInactive: "ئامێرەکە ناچالاکە",
-          catTitle: "کەتەلۆگی بەرهەمە پیشەسازی و ناوماڵەکان",
-          calcTitle: "حاسیبەی دیاریکردنی ڕووبەری پێویست",
-          lblType: "جۆری ژینگە/شوێن", lblWidth: "پانی (بە مەتر)", lblLength: "درێژی (بە مەتر)",
-          resTitle: "کۆنتێکستی پێشنیارکراو", resArea: "تەواوی ڕووبەر", resWatt: "کەمترین ڤۆڵتیەی پێویست",
-          footer: "© ٢٠٢٦ خزمەتگوزارییەکانی پاککردنەوەی بەکڵەر. نەوەی نوێی چارەسەری کۆنترۆڵکردنی مێروو.",
+          simDesc: "ڕێژەی ڕاکێشانی مێش و مەگەز بەپێی درێژی شەپۆلی ڕووناکی تاقی بکەرەوە.",
+          calcTitle: "حاسێبەی ڕووبەری داپۆشینی UV",
+          featTitle: "تایبەتمەندییە گشتییەکان",
+          lblType: "جۆری ژینگە",
+          lblArea: "قەبارەی ڕووبەر (مەتر دووجا)",
+          calcResTitle: "پێشنیاری گونجاو بۆ تۆ:",
+          presTitle: "پێشکەشکردنی کارلێکەر",
+          trapActive: "ئامێرەکە چالاکە (زۆرترین ڕاکێشان)",
+          trapInactive: "ئامێرەکە کوژاوەتەوە",
+          powerOn: "داگیرساندن",
+          powerOff: "کوژاندنەوە",
+          features: [
+            "بەرهەمی بنەڕەتی ئەوروپییە",
+            "دۆستی ژینگەیە و سیستەمی کارەبا لێدان (تەقاندنەوە) بەکارناهێنێت",
+            "گڵۆپی کارامە، دیزاین کراوە بۆ دەرکردنی شەپۆلی شین بۆ ڕاکێشانی مێرووەکان",
+            "دیزاینێکی شاردراوە کە مێرووە گیراوەکان لە چاو دەشارێتەوە",
+            "ڕووبەری داپۆشینی ئامێرەکە تا ١٠٠ مەتر دووجایە",
+            "ماوەی کارامەیی تەمەنی: ٢ ساڵە"
+          ],
           chapters: [
-            { id: 1, title: "١. کێشەکە", desc: "مێرووە فڕیوەکان شوێنی ئامادەکردنی خۆراک پیس دەکەن و دەبنە هۆی بڵاوبوونەوەی نەخۆشی." },
-            { id: 2, title: "٢. چارەسەر", desc: "ئامێرەکانی بەکڵەر تیشکی فلیپسی دژە شکان بەکاردێنن کە ڕێک شەپۆلی ٣٦٥ئێنم دەردەکات." },
-            { id: 3, title: "٣. هێز و توانست", desc: "پێکهاتووە لە تۆڕی کارەبایی ٤٠٠٠ڤۆڵت یان تەختەی چەسپاوی تەندروست بۆ گرتنی مێرووەکان." },
-            { id: 4, title: "٤. بۆچی بەکڵەر؟", desc: "دیزاین کراوە بۆ گونجانی تەواو لەگەڵ پێوەرە تەندروستییەکان و کارکردنی بێدەنگ." }
+            { title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر. گڵۆپەکانی بەکڵەر ڕێک ئەمە دەپێکن." },
+            { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
           ],
           products: [
-            { name: "بەکڵەر پڕۆماکس ٣٦٠", tag: "پیشەسازی / کۆگاکان", desc: "ئامێری بەهێزی بازرگانی تیشکی UV-A بۆ کارگە گەورەکانی خۆراک.", price: "$349", img: "https://unsplash.com" },
-            { name: "بەکڵەر کیچن شیڵد", tag: "چێشتخانە / چێشتخانەکان", desc: "گرتنی مێش بە شێوازی بێدەنگ بەبێ تەقینەوەی مێش و پیسبوونی هەوا.", price: "$219", img: "https://unsplash.com" },
-            { name: "بەکڵەر ئیکۆهۆم مینی", tag: "ناوماڵ / ئۆفیس", desc: "ئامێرێکی شیک و سەرنجڕاکێش بۆ ناوماڵ, حەوشە و ئۆفیسە مۆدێرنەکان.", price: "$129", img: "https://unsplash.com" }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", img: "https://unsplash.com", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار" },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", img: "https://unsplash.com", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار" },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", img: "https://unsplash.com", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار" }
           ]
         }
       };
 
       let currentLang = 'en';
       let isSimOn = false;
-
-      function renderApp() {
-        const data = translations[currentLang];
-        
-        document.getElementById('hero-title').innerText = data.heroTitle;
-        document.getElementById('hero-desc').innerText = data.heroDesc;
-        document.getElementById('stat-lbl1').innerText = data.statL1;
-        document.getElementById('stat-lbl2').innerText = data.statL2;
-        document.getElementById('stat-lbl3').innerText = data.statL3;
-        document.getElementById('pres-title').innerText = data.presTitle;
-        document.getElementById('sim-title').innerText = data.simTitle;
-        document.getElementById('sim-desc').innerText = data.simDesc;
-        document.getElementById('cat-title').innerText = data.catTitle;
-        document.getElementById('calc-title').innerText = data.calcTitle;
-        document.getElementById('lbl-type').innerText = data.lblType;
-        document.getElementById('lbl-width').innerText = data.lblWidth;
-        document.getElementById('lbl-length').innerText = data.lblLength;
-        document.getElementById('calc-res-title').innerText = data.resTitle;
-        document.getElementById('res-area').innerText = data.resArea;
-        document.getElementById('res-watt').innerText = data.resWatt;
-        document.getElementById('footer-text').innerText = data.footer;
-
-        const tabsContainer = document.getElementById('pres-tabs');
-        tabsContainer.innerHTML = '';
-        data.chapters.forEach((ch, idx) => {
-          const btn = document.createElement('button');
-          btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
-          btn.innerText = ch.title;
-          btn.onclick = () => selectChapter(idx, data.chapters);
-          tabsContainer.appendChild(btn);
-        });
-        selectChapter(0, data.chapters);
-
-        const grid = document.getElementById('product-grid');
-        grid.innerHTML = '';
-        data.products.forEach(p => {
-          grid.innerHTML += `
-            <div class="card">
-              <div>
-                <img src="${p.img}" class="card-img" alt="${p.name}">
-                <span class="badge">${p.tag}</span>
-                <h3>${p.name}</h3>
-                <p>${p.desc}</p>
-              </div>
-              <span class="price">${p.price}</span>
-            </div>
-          `;
-        });
-        
-        updateSimUI();
-      }
-
-      function selectChapter(idx, chapters) {
-        document.querySelectorAll('.tab-btn').forEach((b, i) => {
-          b.className = `tab-btn ${i === idx ? 'active' : ''}`;
-        });
-        document.getElementById('chapter-title').innerText = chapters[idx].title;
-        document.getElementById('chapter-desc').innerText = chapters[idx].desc;
-      }
+      let activeChapter = 0;
 
       function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'ku' : 'en';
         document.body.className = currentLang === 'ku' ? 'rtl' : '';
-        renderApp();
+        updateUI();
+      }
+
+      function updateUI() {
+        const d = langData[currentLang];
+        document.getElementById('hero-title').innerText = d.heroTitle;
+        document.getElementById('hero-desc').innerText = d.heroDesc;
+        document.getElementById('cat-title').innerText = d.catTitle;
+        document.getElementById('sim-title').innerText = d.simTitle;
+        document.getElementById('sim-desc').innerText = d.simDesc;
+        document.getElementById('calc-title').innerText = d.calcTitle;
+        document.getElementById('feat-title').innerText = d.featTitle;
+        document.getElementById('lbl-type').innerText = d.lblType;
+        document.getElementById('lbl-area').innerText = d.lblArea;
+        document.getElementById('calc-res-title').innerText = d.calcResTitle;
+        document.getElementById('pres-title').innerText = d.presTitle;
+
+        // سیستەمی تایبەتمەندییەکان
+        const featUl = document.getElementById('features-ul');
+        featUl.innerHTML = '';
+        d.features.forEach(f => {
+          featUl.innerHTML += `<li>${f}</li>`;
+        });
+
+        // نوێکردنەوەی سیمولەیتەر
+        const simBtn = document.getElementById('sim-toggle-btn');
+        const simStatus = document.getElementById('sim-status');
+        if (isSimOn) {
+          simBtn.innerText = d.powerOff;
+          simStatus.innerText = d.trapActive;
+        } else {
+          simBtn.innerText = d.powerOn;
+          simStatus.innerText = d.trapInactive;
+        }
+
+        // بەشی پرێزێنتەیشن
+        const tabContainer = document.getElementById('pres-tabs');
+        tabContainer.innerHTML = '';
+        d.chapters.forEach((ch, idx) => {
+          const btn = document.createElement('button');
+          btn.className = `tab-btn ${idx === activeChapter ? 'active' : ''}`;
+          btn.innerText = currentLang === 'en' ? `Chapter ${idx+1}` : `بەشی ${idx+1}`;
+          btn.onclick = () => { activeChapter = idx; updateUI(); };
+          tabContainer.appendChild(btn);
+        });
+        document.getElementById('chapter-title').innerText = d.chapters[activeChapter].title;
+        document.getElementById('chapter-desc').innerText = d.chapters[activeChapter].desc;
+
+        // ڕێکخستنی کەتەلۆگی نوێ بە وێنە و نرخی دینار
+        const grid = document.getElementById('product-grid');
+        grid.innerHTML = '';
+        d.products.forEach(p => {
+          grid.innerHTML += `
+            <div class="card">
+              <div>
+                <img class="card-img" src="${p.img}" alt="${p.name}">
+                <span class="badge">${p.badge}</span>
+                <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
+                <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>
+              </div>
+              <div class="price-tag">
+                <span class="price-main">${p.price}</span>
+                <div class="price-parts">
+                  <span>Sticker: ${p.sticker}</span>
+                  <span>Lamp: ${p.lamp}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
         calculateCoverage();
       }
 
       function toggleSim() {
         isSimOn = !isSimOn;
-        updateSimUI();
-      }
-
-      function updateSimUI() {
-        const data = translations[currentLang];
-        const btn = document.getElementById('sim-toggle-btn');
         const box = document.getElementById('sim-box');
-        const status = document.getElementById('sim-status');
-        
-        if(isSimOn) {
-          btn.innerText = data.powerOn;
-          btn.className = "sim-btn on";
-          box.classList.add('active');
-          status.innerText = data.statActive;
-          status.style.color = "#22c55e";
-        } else {
-          btn.innerText = data.powerOff;
-          btn.className = "sim-btn";
-          box.classList.remove('active');
-          status.innerText = data.statInactive;
-          status.style.color = "#ef4444";
-        }
+        const btn = document.getElementById('sim-toggle-btn');
+        if (isSimOn) { box.classList.add('active'); btn.classList.add('on'); } 
+        else { box.classList.remove('active'); btn.classList.remove('on'); }
+        updateUI();
       }
 
-      function setSpectrum(nm, id) {
+      function setSpectrum(nm, btnId) {
         document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        if(isSimOn) {
-          const box = document.getElementById('sim-box');
-          if(nm === 365) box.style.boxShadow = "0 0 30px rgba(99, 102, 241, 0.6)";
-          if(nm === 450) box.style.boxShadow = "0 0 30px rgba(59, 130, 246, 0.5)";
-          if(nm === 580) box.style.boxShadow = "0 0 30px rgba(245, 158, 11, 0.4)";
+        document.getElementById(btnId).classList.add('active');
+        const status = document.getElementById('sim-status');
+        if (isSimOn) {
+          if (nm === 365) status.innerText = currentLang === 'en' ? "TRAP ACTIVE (99% ATTRACTION)" : "ئامێرەکە چالاکە (٩٩٪ ڕاکێشان)";
+          else if (nm === 450) status.innerText = currentLang === 'en' ? "WEAK SPECTRA (40% ATTRACTION)" : "شەپۆلی لاواز (٤٠٪ ڕاکێشان)";
+          else status.innerText = currentLang === 'en' ? "ZERO ATTRACTION (0%)" : "بێ کاریگەر (٠٪ ڕاکێشان)";
         }
       }
 
       function calculateCoverage() {
-        const mult = parseFloat(document.getElementById('env-type').value);
-        const w = parseFloat(document.getElementById('room-width').value) || 0;
-        const l = parseFloat(document.getElementById('room-length').value) || 0;
-        const area = w * l;
-        const watt = Math.round(area * mult);
-        
-        document.getElementById('out-area').innerText = area;
-        document.getElementById('out-watt').innerText = watt;
+        const type = document.getElementById('env-type').value;
+        const area = parseFloat(document.getElementById('area-size').value) || 0;
+        let count = Math.ceil(area / 100); // چونکە لە وێنەکەدا ڕووبەری داپۆشینی ئامێرەکە تا ١00 مەتری دووجایە
+
+        const out = document.getElementById('calc-output');
+        if (currentLang === 'en') {
+          out.innerText = `For a ${area} sqm ${type} environment, we recommend installing at least ${count} Buckler device(s) for full 100m² coverage.`;
+        } else {
+          out.innerText = `بۆ ڕووبەری ${area} مەتر دووجا لە ژینگەی (${type === 'home' ? 'ناوچەی نیشتەجێبوون' : type === 'restaurant' ? 'چێشتخانە' : 'کارگە'}), پێشنیار دەکەین لانی کەم ${count} دانە ئامێری بەکڵەر دابنێیت بۆ داپۆشینی تەواوی ١٠٠ مەتر دووجاییەکە.`;
+        }
       }
 
-      renderApp();
-      calculateCoverage();
+      updateUI();
     </script>
   </body>
 </html>

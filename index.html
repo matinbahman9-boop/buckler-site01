@@ -48,8 +48,8 @@
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
       
-      /* چوارچێوەی وێنەکان - سپی بۆ ئەوەی کاڵا ڕەشەکان بە جوانی دەرکەون */
-      .card-img { width: 100%; height: 180px; object-fit: contain; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; }
+      /* چوارچێوەی وێنەکان - سپی بۆ ئەوەی بە جوانی دیار بن */
+      .card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
       .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
@@ -160,12 +160,10 @@
     </footer>
 
     <script>
-      // وێنە فەرمییە ڕاستەقینەکان کە لە سێرڤەری گشتی دابین کراون
-      const imageLinks = {
-        trap50_E: "https://ibb.co", 
-        trap50_X: "https://ibb.co", 
-        trap30_E: "https://ibb.co"  
-      };
+      // وێنە جێگیرە نوێیەکان کە لە هەموو لایەک بێ کێشە دەکرێنەوە
+      const img1 = "https://unsplash.com";
+      const img2 = "https://unsplash.com";
+      const img3 = "https://unsplash.com";
 
       const langData = {
         en: {
@@ -199,9 +197,9 @@
             { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", img: "https://unsplash.com" },
-            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", img: "https://unsplash.com" },
-            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", img: "https://unsplash.com" }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", img: img1 },
+            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", img: img2 },
+            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", img: img3 }
           ]
         },
         ku: {
@@ -235,9 +233,9 @@
             { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: "https://unsplash.com" },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: "https://unsplash.com" },
-            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", img: "https://unsplash.com" }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: img1 },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: img2 },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", img: img3 }
           ]
         }
       };

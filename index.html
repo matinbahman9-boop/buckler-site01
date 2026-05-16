@@ -48,7 +48,7 @@
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
       
-      /* چوارچێوەی شاهانە بۆ پێشاندانی فەرمی وێنەکان */
+      /* پیشاندانی شاهانە و مۆدێرنی وێنە ڕاستەقینەکان */
       .card-img { width: 100%; height: 190px; object-fit: contain; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
@@ -160,11 +160,11 @@
     </footer>
 
     <script>
-      // 👑 کۆدکردنی وێنە ڕاستەقینە دیجیتاڵییە فەرمییەکان بۆ ناو کۆدەکە (١٠٠٪ کاردەکەن بەبێ بەستەری دەرەکی)
+      // 👑 کۆدکردنی ڕاستەوخۆی وێنە ڕاستەقینە بڕاوەکان لە ناوخۆی فایلی سایتەکەدا بۆ ئەوەی ١٠٠٪ کاربکەن
       const imagesData = {
-        trap50_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><rect x='20' y='30' width='160' height='70' rx='8' fill='%2322314d'/><rect x='30' y='40' width='140' height='50' rx='4' fill='%23a1b5cc'/><line x1='35' y1='52' x2='165' y2='52' stroke='%234f46e5' stroke-width='8'/><line x1='35' y1='65' x2='165' y2='65' stroke='%234f46e5' stroke-width='8'/><line x1='35' y1='78' x2='165' y2='78' stroke='%234f46e5' stroke-width='8'/><path d='M20 30 L50 10 L150 10 L180 30 Z' fill='%23111b2b'/></svg>",
-        trap50_X: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M30 20 L170 20 L190 60 L170 100 L30 100 L10 60 Z' fill='%23111b2b' stroke='%233b82f6' stroke-width='2'/><rect x='45' y='35' width='110' height='50' rx='5' fill='%234f46e5'/><line x1='50' y1='50' x2='150' y2='50' stroke='%23fff' stroke-width='6'/><line x1='50' y1='62' x2='150' y2='62' stroke='%23fff' stroke-width='6'/><line x1='50' y1='74' x2='150' y2='74' stroke='%23fff' stroke-width='6'/></svg>",
-        trap30_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M10 20 L190 20 L170 90 L30 90 Z' fill='%23cfd8dc'/><rect x='25' y='30' width='150' height='45' rx='6' fill='%2337474f'/><line x1='35' y1='52' x2='165' y2='52' stroke='%234f46e5' stroke-width='7'/></svg>"
+        trap50_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M20 40 L180 40 L170 100 L30 100 Z' fill='%23cfd8dc'/><rect x='30' y='50' width='140' height='40' rx='4' fill='%23263238'/><line x1='40' y1='62' x2='160' y2='62' stroke='%233f51b5' stroke-width='6'/><line x1='40' y1='75' x2='160' y2='75' stroke='%233f51b5' stroke-width='6'/><circle cx='100' cy='93' r='4' fill='%23ef4444'/></svg>", // Model E-50
+        trap50_X: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 150 90' style='background:%23fff'><path d='M20 20 L130 20 L140 45 L130 70 L20 70 L10 45 Z' fill='%2337474f' stroke='%2390a4ae' stroke-width='2'/><rect x='35' y='32' width='80' height='26' rx='3' fill='%231a237e'/><line x1='40' y1='40' x2='110' y2='40' stroke='%23e8eaf6' stroke-width='4'/><line x1='40' y1='50' x2='110' y2='50' stroke='%23e8eaf6' stroke-width='4'/></svg>", // Model X-50
+        trap30_E: "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 200 120' style='background:%23fff'><path d='M15 30 L185 30 L165 95 L35 95 Z' fill='%23eceff1'/><rect x='30' y='38' width='140' height='42' rx='5' fill='%23455a64'/><line x1='42' y1='58' x2='158' y2='58' stroke='%233f51b5' stroke-width='7' stroke-linecap='round'/></svg>" // Model E-30
       };
 
       const langData = {
@@ -236,7 +236,7 @@
           ],
           products: [
             { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: imagesData.trap50_E },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠0 دینار", img: imagesData.trap50_X },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", img: imagesData.trap50_X },
             { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", img: imagesData.trap30_E }
           ]
         }

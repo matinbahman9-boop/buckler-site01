@@ -48,16 +48,21 @@
       .spec-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 13px; }
       .spec-btn.active { border-color: var(--primary); background: #2e2a75; }
 
-      /* Catalog Grid & Images */
+      /* Catalog Grid - No Broken Images */
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-      .card-img { width: 100%; height: 180px; object-fit: contain; background: #1a2035; border-radius: 8px; margin-bottom: 15px; padding: 10px; }
+      
+      /* شێوازی نوێی وێنەی گرافیکی بە کۆد (UV Mockup Device) */
+      .device-mockup { width: 100%; height: 140px; background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%); border-radius: 8px; margin-bottom: 15px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid #334155; box-shadow: inset 0 0 20px rgba(0,0,0,0.6); overflow: hidden; }
+      .uv-bar { width: 85%; height: 12px; background: #6366f1; border-radius: 6px; margin: 6px 0; box-shadow: 0 0 15px #4f46e5, 0 0 30px #6366f1; animation: glow 2s infinite alternate; }
+      @keyframes glow { from { opacity: 0.6; } to { opacity: 1; } }
+
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
       .price-tag { background: #1e293b; border-radius: 6px; padding: 10px; margin-top: 10px; border-left: 4px solid var(--primary); }
       body.rtl .price-tag { border-left: none; border-right: 4px solid var(--primary); }
       .price-main { font-weight: bold; color: #34d399; font-size: 19px; display: block; margin-bottom: 5px; }
-      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 20px; }
+      .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 10px; }
       
       /* Features List */
       .features-list { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid #1e293b; margin-top: 20px; }
@@ -116,12 +121,12 @@
       <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;">Simulate attraction rates based on wavelength spectras.</p>
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
-        <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
+        <div class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</div>
         <div style="font-weight: bold; font-size: 18px;" id="sim-status">TRAP INACTIVE</div>
         <div class="spec-selector">
-          <button class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</button>
-          <button class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</button>
-          <button class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</button>
+          <div class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</div>
+          <div class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</div>
+          <div class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</div>
         </div>
       </div>
     </section>
@@ -188,6 +193,8 @@
           trapInactive: "TRAP INACTIVE",
           powerOn: "POWER ON",
           powerOff: "POWER OFF",
+          lblSticker: "Sticker",
+          lblLamp: "Lamp",
           features: [
             "European origin",
             "Eco-friendly and does not adopt the electrocution system",
@@ -201,9 +208,9 @@
             { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", img: "https://unsplash.com", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500" },
-            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", img: "https://unsplash.com", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500" },
-            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", img: "https://unsplash.com", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000" }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", tubes: 3 },
+            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", tubes: 4 },
+            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", tubes: 2 }
           ]
         },
         ku: {
@@ -222,6 +229,8 @@
           trapInactive: "ئامێرەکە کوژاوەتەوە",
           powerOn: "داگیرساندن",
           powerOff: "کوژاندنەوە",
+          lblSticker: "فلای ستیكەر",
+          lblLamp: "گڵۆپ",
           features: [
             "بەرهەمی بنەڕەتی ئەوروپییە",
             "دۆستی ژینگەیە و سیستەمی کارەبا لێدان (تەقاندنەوە) بەکارناهێنێت",
@@ -235,9 +244,9 @@
             { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
           ],
           products: [
-            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", img: "https://unsplash.com", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار" },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", img: "https://unsplash.com", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار" },
-            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", img: "https://unsplash.com", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار" }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", tubes: 3 },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", tubes: 4 },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", tubes: 2 }
           ]
         }
       };
@@ -266,25 +275,18 @@
         document.getElementById('calc-res-title').innerText = d.calcResTitle;
         document.getElementById('pres-title').innerText = d.presTitle;
 
-        // سیستەمی تایبەتمەندییەکان
+        // لیستەکە
         const featUl = document.getElementById('features-ul');
         featUl.innerHTML = '';
-        d.features.forEach(f => {
-          featUl.innerHTML += `<li>${f}</li>`;
-        });
+        d.features.forEach(f => { featUl.innerHTML += `<li>${f}</li>`; });
 
-        // نوێکردنەوەی سیمولەیتەر
+        // سیمولەیتەر
         const simBtn = document.getElementById('sim-toggle-btn');
         const simStatus = document.getElementById('sim-status');
-        if (isSimOn) {
-          simBtn.innerText = d.powerOff;
-          simStatus.innerText = d.trapActive;
-        } else {
-          simBtn.innerText = d.powerOn;
-          simStatus.innerText = d.trapInactive;
-        }
+        simBtn.innerText = isSimOn ? d.powerOff : d.powerOn;
+        simStatus.innerText = isSimOn ? d.trapActive : d.trapInactive;
 
-        // بەشی پرێزێنتەیشن
+        // پرێزێنتەیشن
         const tabContainer = document.getElementById('pres-tabs');
         tabContainer.innerHTML = '';
         d.chapters.forEach((ch, idx) => {
@@ -297,14 +299,19 @@
         document.getElementById('chapter-title').innerText = d.chapters[activeChapter].title;
         document.getElementById('chapter-desc').innerText = d.chapters[activeChapter].desc;
 
-        // ڕێکخستنی کەتەلۆگی نوێ بە وێنە و نرخی دینار
+        // کەتەلۆگ بێ کێشەی وێنە
         const grid = document.getElementById('product-grid');
         grid.innerHTML = '';
         d.products.forEach(p => {
+          let tubesHtml = '';
+          for(let i=0; i<p.tubes; i++) { tubesHtml += '<div class="uv-bar"></div>'; }
+
           grid.innerHTML += `
             <div class="card">
               <div>
-                <img class="card-img" src="${p.img}" alt="${p.name}">
+                <div class="device-mockup">
+                  ${tubesHtml}
+                </div>
                 <span class="badge">${p.badge}</span>
                 <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
                 <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>
@@ -312,8 +319,8 @@
               <div class="price-tag">
                 <span class="price-main">${p.price}</span>
                 <div class="price-parts">
-                  <span>Sticker: ${p.sticker}</span>
-                  <span>Lamp: ${p.lamp}</span>
+                  <span>${d.lblSticker}: ${p.sticker}</span>
+                  <span>${d.lblLamp}: ${p.lamp}</span>
                 </div>
               </div>
             </div>
@@ -346,7 +353,7 @@
       function calculateCoverage() {
         const type = document.getElementById('env-type').value;
         const area = parseFloat(document.getElementById('area-size').value) || 0;
-        let count = Math.ceil(area / 100); // چونکە لە وێنەکەدا ڕووبەری داپۆشینی ئامێرەکە تا ١00 مەتری دووجایە
+        let count = Math.ceil(area / 100);
 
         const out = document.getElementById('calc-output');
         if (currentLang === 'en') {

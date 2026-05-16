@@ -35,21 +35,32 @@
       .tab-btn { background: #1e293b; color: var(--text-sub); border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
       .tab-btn.active { background: var(--primary); color: white; }
       
-      .sim-box { background: #090d16; border: 2px dashed #4338ca; border-radius: 12px; padding: 30px; text-align: center; margin-top: 20px; position: relative; }
-      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(99, 102, 241, 0.05); pointer-events: none; opacity: 0; transition: 0.3s; border-radius: 12px; }
-      .sim-box.active .uv-glow { opacity: 1; background: rgba(99, 102, 241, 0.15); box-shadow: inset 0 0 50px rgba(99, 102, 241, 0.3); }
-      .sim-btn { background: #ef4444; color: white; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+      /* بەشی سیمولەیتەری پێشکەوتووی نوێ */
+      .sim-box { background: #090d16; border: 2px dashed #4338ca; border-radius: 12px; padding: 40px 20px; text-align: center; margin-top: 20px; position: relative; overflow: hidden; min-height: 250px; }
+      .uv-glow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: 0.5s; border-radius: 12px; z-index: 1; }
+      .sim-box.active .uv-glow { opacity: 1; background: rgba(99, 102, 241, 0.12); box-shadow: inset 0 0 60px rgba(99, 102, 241, 0.4); }
+      
+      /* گرافیکی ناو جیهازەکە لە کاتی پێکردن */
+      .trap-display { width: 160px; height: 90px; background: #232d42; border: 3px solid #455a64; border-radius: 8px; margin: 20px auto; position: relative; z-index: 2; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      .sim-box.active .trap-display { border-color: #6366f1; box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); background: #111a2e; }
+      .trap-bulb { width: 80%; height: 10px; background: #555; border-radius: 5px; margin: 5px 0; transition: 0.3s; }
+      .sim-box.active .trap-bulb { background: #818cf8; box-shadow: 0 0 15px #6366f1, 0 0 25px #818cf8; }
+      
+      /* مێرووە جوڵاوەکان */
+      .bug { position: absolute; font-size: 20px; z-index: 3; pointer-events: none; opacity: 0; transition: transform 2s linear, opacity 0.5s; }
+      .sim-box.active .bug { opacity: 1; }
+
+      .sim-btn { background: #ef4444; color: white; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-bottom: 15px; position: relative; z-index: 5; transition: 0.3s; }
       .sim-btn.on { background: #22c55e; }
-      .spec-selector { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+      .spec-selector { display: flex; justify-content: center; gap: 10px; margin-top: 15px; position: relative; z-index: 5; }
       .spec-btn { background: #1e293b; color: white; border: 1px solid #334155; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 13px; }
-      .spec-btn.active { border-color: var(--primary); background: #2e2a75; }
+      .spec-btn.active { border-color: #ef4444; background: #2e2a75; }
 
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; }
       .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
       .card:hover { transform: translateY(-5px); border-color: var(--primary); }
       
-      /* چوارچێوەی شاهانە بە باکگراوندی دیجیتاڵی گەشاوە */
-      .card-img-wrapper { width: 100%; height: 190px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+      .card-img-wrapper { width: 100%; height: 190px; background: #ffffff; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2e3b56; padding: 10px; display: flex; justify-content: center; align-items: center; }
       .card-img-wrapper svg { width: 100%; height: 100%; max-height: 160px; }
 
       .badge { background: #b91c1c; color: #fca5a5; padding: 4px 10px; font-size: 11px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
@@ -58,6 +69,10 @@
       .price-main { font-weight: bold; color: #34d399; font-size: 19px; display: block; margin-bottom: 5px; }
       .price-parts { font-size: 13px; color: var(--text-sub); display: flex; justify-content: space-between; margin-top: 10px; }
       
+      /* دوگمەی کڕینی ڕاستەوخۆ لە ڕێگەی واتسئاپ */
+      .buy-btn { display: block; text-align: center; background: #22c55e; color: white; text-decoration: none; padding: 10px; border-radius: 6px; margin-top: 15px; font-weight: bold; font-size: 15px; transition: 0.3s; }
+      .buy-btn:hover { background: #16a34a; }
+
       .features-list { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid #1e293b; margin-top: 20px; }
       .features-list ul { list-style: none; }
       .features-list li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-main); }
@@ -74,7 +89,10 @@
       .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
       body.rtl .whatsapp-float { right: auto; left: 20px; }
 
+      /* ژێدەر و خاوەندارێتی مەتین سورچی */
       footer { background: #070a13; text-align: center; padding: 40px 20px; color: var(--text-sub); border-top: 1px solid #1e293b; font-size: 13px; margin-top: 40px; }
+      .credits { font-weight: bold; color: #fff; margin-top: 10px; font-size: 14px; letter-spacing: 1px; }
+      .credits span { color: var(--primary); }
     </style>
   </head>
   <body>
@@ -105,17 +123,30 @@
       </div>
     </section>
 
+    <!-- بەشی سیمولەیتەری ڕاستەقینەی مێرووەکان -->
     <section class="section">
       <h2 class="section-title" id="sim-title">Live UV Simulator</h2>
       <p id="sim-desc" style="text-align: center; color: var(--text-sub); margin-bottom: 15px;">Simulate attraction rates based on wavelength spectras.</p>
       <div class="sim-box" id="sim-box">
         <div class="uv-glow"></div>
-        <div class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</div>
+        
+        <!-- مێرووەکان لە ناو کایەکەدا دروست دەبن -->
+        <div class="bug" id="bug1" style="top: 10%; left: 5%;">🪰</div>
+        <div class="bug" id="bug2" style="top: 80%; left: 85%;">🦟</div>
+        <div class="bug" id="bug3" style="top: 20%; left: 75%;">🦋</div>
+        <div class="bug" id="bug4" style="top: 70%; left: 10%;">🪰</div>
+
+        <div class="trap-display">
+          <div class="trap-bulb"></div>
+          <div class="trap-bulb"></div>
+        </div>
+
+        <button class="sim-btn" id="sim-toggle-btn" onclick="toggleSim()">POWER OFF</button>
         <div style="font-weight: bold; font-size: 18px;" id="sim-status">TRAP INACTIVE</div>
         <div class="spec-selector">
-          <div class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</div>
-          <div class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</div>
-          <div class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</div>
+          <button class="spec-btn active" id="spec1" onclick="setSpectrum(365, 'spec1')">365nm</button>
+          <button class="spec-btn" id="spec2" onclick="setSpectrum(450, 'spec2')">450nm</button>
+          <button class="spec-btn" id="spec3" onclick="setSpectrum(580, 'spec3')">580nm</button>
         </div>
       </div>
     </section>
@@ -154,18 +185,22 @@
       </div>
     </section>
 
-    <a href="https://wa.me" class="whatsapp-float" target="_blank">💬</a>
+    <!-- بەستەر بۆ ژمارەی مۆبایلی خۆت (دەتوانی بیگۆڕیت لە خوارەوە) -->
+    <a href="https://wa.me!" class="whatsapp-float" target="_blank">💬</a>
 
     <footer>
       <p>&copy; 2026 BUCKLER Pest Control Tech. All rights reserved.</p>
+      <div class="credits">Developed by <span>Matin Surchii</span></div>
     </footer>
 
     <script>
-      // 💎 کۆدکردنی نوێی دەستکردی وێنە ڕاستەقینەکان کە بە تەواوی هاوشێوەی وێنە ڕەسەنەکەن و بە ١٠٠٪ کاردەکەن
+      // ⚠️ لێرە ژمارەی واتسئاپەکەت بنووسە بۆ ئەوەی ڕاستەوخۆ کڕیار نامەت بۆ بنێرێت
+      const myWhatsApp = "9647500000000"; 
+
       const svgGraphics = {
-        modelE50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><rect x="15" y="50" width="10" height="20" rx="2" fill="#ef4444"/><rect x="175" y="50" width="10" height="20" rx="2" fill="#ef4444"/></svg>`,
-        modelX50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><rect x="5" y="42" width="15" height="15" fill="#ef4444" rx="3"/><rect x="180" y="42" width="15" height="15" fill="#ef4444" rx="3"/></svg>`,
-        modelE30: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M15 30 L185 30 L165 95 L35 95 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/><rect x="25" y="38" width="150" height="42" rx="5" fill="#1a237e"/><line x1="38" y1="58" x2="162" y2="58" stroke="#e8eaf6" stroke-width="8" stroke-linecap="round"/><rect x="172" y="70" width="12" height="15" fill="#37474f" rx="2"/></svg>`
+        modelE50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M20 30 C 20 30, 100 10, 180 30 L180 90 C 180 90, 100 110, 20 90 Z" fill="#b0bec5" stroke="#37474f" stroke-width="2"/><path d="M25 35 C 25 35, 100 18, 175 35 L175 85 C 175 85, 100 102, 25 85 Z" fill="#1a237e"/><line x1="35" y1="48" x2="165" y2="48" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="62" x2="165" y2="62" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/><line x1="35" y1="75" x2="165" y2="75" stroke="#e8eaf6" stroke-width="6" stroke-linecap="round"/></svg>`,
+        modelX50: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M25 20 L175 20 L190 50 L175 85 L25 85 L10 50 Z" fill="#37474f" stroke="#78909c" stroke-width="3"/><path d="M10 50 L190 50" stroke="#1a237e" stroke-width="20"/><line x1="35" y1="38" x2="165" y2="38" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/><line x1="35" y1="65" x2="165" y2="65" stroke="#e8eaf6" stroke-width="7" stroke-linecap="round"/></svg>`,
+        modelE30: `<svg viewBox="0 0 200 120" xmlns="http://w3.org"><path d="M15 30 L185 30 L165 95 L35 95 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/><rect x="25" y="38" width="150" height="42" rx="5" fill="#1a237e"/><line x1="38" y1="58" x2="162" y2="58" stroke="#e8eaf6" stroke-width="8" stroke-linecap="round"/></svg>`
       };
 
       const langData = {
@@ -187,22 +222,13 @@
           powerOff: "POWER OFF",
           lblSticker: "Sticker",
           lblLamp: "Lamp",
-          features: [
-            "European origin",
-            "Eco-friendly and does not adopt the electrocution system",
-            "Efficient lamp, designed to emit the blue spectrum of flying insects",
-            "Discrete design that hides captured insects",
-            "Device coverage is up to 100 m2",
-            "Lifetime efficiency: 2 years"
-          ],
-          chapters: [
-            { title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm. Buckler tubes hit this perfectly." },
-            { title: "Chapter 2: Eco-Friendly Design", desc: "No poisons, zero sprays, and complete chemical-free safety for food preparation zones." }
-          ],
+          lblOrder: "Order via WhatsApp 💬",
+          features: ["European origin", "Eco-friendly design", "Efficient 365nm lamp", "Discrete capture hiding", "Coverage up to 100 m2", "Lifetime: 2 years"],
+          chapters: [{ title: "Chapter 1: The 365nm Science", desc: "Insects are highly attracted to light spectras around 365nm." }, { title: "Chapter 2: Chemical-Free", desc: "Zero poison, perfect safety for kitchens." }],
           products: [
-            { name: "Model E Trap-50", desc: "INDUSTRIAL & PRODUCTION AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelE50 },
-            { name: "Model X Trap-50", desc: "ELEGANT DESIGN / RESTAURANTS / INDUSTRIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelX50 },
-            { name: "Model E Trap-30", desc: "PRACTICAL DESIGN / INDUSTRIAL AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", html: svgGraphics.modelE30 }
+            { name: "Model E Trap-50", desc: "INDUSTRIAL AREAS", badge: "Industrial Pro", price: "IQD 225,000", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "RESTAURANTS & COMMERCIAL", badge: "Premium Elegant", price: "IQD 262,500", sticker: "IQD 6,000", lamp: "IQD 22,500", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "PRACTICAL COMPACT AREAS", badge: "Practical Choice", price: "IQD 195,000", sticker: "IQD 6,000", lamp: "IQD 18,000", html: svgGraphics.modelE30 }
           ]
         },
         ku: {
@@ -223,22 +249,13 @@
           powerOff: "کوژاندنەوە",
           lblSticker: "فلای ستیكەر",
           lblLamp: "گڵۆپ",
-          features: [
-            "بەرهەمی بنەڕەتی ئەوروپییە",
-            "دۆستی ژینگەیە و سیستەمی کارەبا لێدان (تەقاندنەوە) بەکارناهێنێت",
-            "گڵۆپی کارامە، دیزاین کراوە بۆ دەرکردنی شەپۆلی شین بۆ ڕاکێشانی مێرووەکان",
-            "دیزاینێکی شاردراوە کە مێرووە گیراوەکان لە چاو دەشارێتەوە",
-            "ڕووبەری داپۆشینی ئامێرەکە تا ١٠٠ مەتر دووجایە",
-            "ماوەی کارامەیی تەمەنی: ٢ ساڵە"
-          ],
-          chapters: [
-            { title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر. گڵۆپەکانی بەکڵەر ڕێک ئەمە دەپێکن." },
-            { title: "بەشی ٢: دیزاینی دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، و بە تەواوی دوور لە ماددەی کیمیایی بۆ شوێنەکانی ئامادەکردنی خۆراک." }
-          ],
+          lblOrder: "داواکردن لە ڕێگەی واتسئاپ 💬",
+          features: ["بەرهەمی بنەڕەتی ئەوروپییە", "دۆستی ژینگەیە و بێ تەقینەوەیە", "گڵۆپی کارامەی شەپۆلی شین", "دیزاینی شاردراوەی مێرووەکان", "داپۆشینی تا ١٠٠ مەتر دووجا", "تەمەنی کارامەیی: ٢ ساڵ"],
+          chapters: [{ title: "بەشی ١: زانستی ٣٦٥ نانۆمەتر", desc: "مێرووەکان زۆرترین ڕادە ڕادەکێشرێن بەرەو شەپۆلی ٣٦٥ نانۆمەتر." }, { title: "بەشی ٢: دۆستی ژینگە", desc: "بێ ژەهر، بێ سپڕی، بۆ شوێنی خۆراک." }],
           products: [
-            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و شوێنەکانی بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelE50 },
-            { name: "Model X Trap-50", desc: "دیزاینی ناوازە / بۆ چێشتخانە و هۆڵە پیشەسازییەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelX50 },
-            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی / گونجاو بۆ شوێنە جیاوازەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", html: svgGraphics.modelE30 }
+            { name: "Model E Trap-50", desc: "تایبەت بە پیشەسازی و بەرهەمهێنان", badge: "پڕۆ پیشەسازی", price: "٢٢٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelE50 },
+            { name: "Model X Trap-50", desc: "دیزاینی ناوازە بۆ چێشتخانەکان", badge: "دیزاینی مۆدێرن", price: "٢٦٢,٥٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "٢٢,٥٠٠ دینار", html: svgGraphics.modelX50 },
+            { name: "Model E Trap-30", desc: "دیزاینی پراکتیکی بۆ شوێنە مامناوەندەکان", badge: "پراکتیکی و گونجاو", price: "١٩٥,٠٠٠ دینار", sticker: "٦,٠٠٠ دینار", lamp: "١٨,٠٠٠ دینار", html: svgGraphics.modelE30 }
           ]
         }
       };
@@ -246,6 +263,7 @@
       let currentLang = 'en';
       let isSimOn = false;
       let activeChapter = 0;
+      let bugInterval;
 
       function toggleLanguage() {
         currentLang = currentLang === 'en' ? 'ku' : 'en';
@@ -269,7 +287,7 @@
 
         const featUl = document.getElementById('features-ul');
         featUl.innerHTML = '';
-        d.features.forEach(f => { featUl.innerHTML += `<li>${f}</li>`; });
+        d.features.forEach(f => { featUl.innerHTML += `<li>\${f}</li>`; });
 
         const simBtn = document.getElementById('sim-toggle-btn');
         const simStatus = document.getElementById('sim-status');
@@ -280,8 +298,8 @@
         tabContainer.innerHTML = '';
         d.chapters.forEach((ch, idx) => {
           const btn = document.createElement('button');
-          btn.className = `tab-btn ${idx === activeChapter ? 'active' : ''}`;
-          btn.innerText = currentLang === 'en' ? `Chapter ${idx+1}` : `بەشی ${idx+1}`;
+          btn.className = `tab-btn \${idx === activeChapter ? 'active' : ''}`;
+          btn.innerText = currentLang === 'en' ? `Chapter \${idx+1}` : `بەشی \${idx+1}`;
           btn.onclick = () => { activeChapter = idx; updateUI(); };
           tabContainer.appendChild(btn);
         });
@@ -291,64 +309,20 @@
         const grid = document.getElementById('product-grid');
         grid.innerHTML = '';
         d.products.forEach(p => {
+          // دروستکردنی بەستەری ناوازەی نامەی واتسئاپ بۆ هەر بەرهەمێک بە جیا
+          const waMessage = encodeURIComponent(`Hello Matin Surchii, I would like to order: \({p.name} (\){p.price})`);
+          const waLink = `https://wa.me\({myWhatsApp}?text=\){waMessage}`;
+
           grid.innerHTML += `
             <div class="card">
               <div>
-                <div class="card-img-wrapper">
-                  ${p.html}
-                </div>
-                <span class="badge">${p.badge}</span>
-                <h3 style="color:#fff; margin-bottom:5px;">${p.name}</h3>
-                <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">${p.desc}</p>
+                <div class="card-img-wrapper">\${p.html}</div>
+                <span class="badge">\${p.badge}</span>
+                <h3 style="color:#fff; margin-bottom:5px;">\${p.name}</h3>
+                <p style="color:var(--text-sub); font-size:13px; margin-bottom:15px;">\${p.desc}</p>
               </div>
-              <div class="price-tag">
-                <span class="price-main">${p.price}</span>
-                <div class="price-parts">
-                  <span>${d.lblSticker}: ${p.sticker}</span>
-                  <span>${d.lblLamp}: ${p.lamp}</span>
-                </div>
-              </div>
-            </div>
-          `;
-        });
-
-        calculateCoverage();
-      }
-
-      function toggleSim() {
-        isSimOn = !isSimOn;
-        const box = document.getElementById('sim-box');
-        const btn = document.getElementById('sim-toggle-btn');
-        if (isSimOn) { box.classList.add('active'); btn.classList.add('on'); } 
-        else { box.classList.remove('active'); btn.classList.remove('on'); }
-        updateUI();
-      }
-
-      function setSpectrum(nm, btnId) {
-        document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(btnId).classList.add('active');
-        const status = document.getElementById('sim-status');
-        if (isSimOn) {
-          if (nm === 365) status.innerText = currentLang === 'en' ? "TRAP ACTIVE (99% ATTRACTION)" : "ئامێرەکە چالاکە (٩٩٪ ڕاکێشان)";
-          else if (nm === 450) status.innerText = currentLang === 'en' ? "WEAK SPECTRA (40% ATTRACTION)" : "شەپۆلی لاواز (٤٠٪ ڕاکێشان)";
-          else status.innerText = currentLang === 'en' ? "ZERO ATTRACTION (0%)" : "بێ کاریگەر (٠٪ ڕاکێشان)";
-        }
-      }
-
-      function calculateCoverage() {
-        const type = document.getElementById('env-type').value;
-        const area = parseFloat(document.getElementById('area-size').value) || 0;
-        let count = Math.ceil(area / 100);
-
-        const out = document.getElementById('calc-output');
-        if (currentLang === 'en') {
-          out.innerText = `For a ${area} sqm ${type} environment, we recommend installing at least ${count} Buckler device(s) for full 100m² coverage.`;
-        } else {
-          out.innerText = `بۆ ڕووبەری ${area} مەتر دووجا لە ژینگەی (${type === 'home' ? 'ناوچەی نیشتەجێبوون' : type === 'restaurant' ? 'چێشتخانە' : 'کارگە'}), پێشنیار دەکەین لانی کەم ${count} دانە ئامێری بەکڵەر دابنێیت بۆ داپۆشینی تەواوی ١٠٠ مەتر دووجاییەکە.`;
-        }
-      }
-
-      updateUI();
-    </script>
-  </body>
-</html>
+              <div>
+                <div class="price-tag">
+                  <span class="price-main">\${p.price}</span>
+                  <div class="price-parts">
+                    
